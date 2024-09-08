@@ -174,7 +174,7 @@ function Hero() {
   )
 }
 
-const GradientButton = () => {
+function GradientButton() {
   return (
     <Button
       size="lg"
@@ -202,16 +202,51 @@ const GradientButton = () => {
   );
 };
 
-function Logos() {
-  const companies = [
-    { name: 'Met Office', icon: <Icons.SunIcon /> },
-    { name: 'Department for Business & Trade', icon: <Icons.BarChartIcon /> },
-    { name: 'Patch Consultancy', icon: <Icons.PaperPlaneIcon /> },
-    { name: 'Gigabyte Software', icon: <Icons.CodeIcon /> },
-    { name: 'Elev8 Exchange', icon: <Icons.BarChartIcon /> },
-    { name: 'Tech Innovators', icon: <Icons.LightningBoltIcon /> },
-    { name: 'Global Systems', icon: <Icons.GlobeIcon /> },
-    { name: 'Data Dynamics', icon: <Icons.BarChartIcon /> },
+type RadixIconType = keyof typeof Icons;
+
+interface Company {
+  name: string;
+  icon: RadixIconType;
+  color: string;
+  shape: 'rounded-full' | 'rounded-xl';
+}
+
+interface LogoBoxProps extends Company { }
+
+const LogoBox: React.FC<LogoBoxProps> = ({ icon, name, shape }) => {
+  const Icon = Icons[icon];
+  return (
+    <div className="flex flex-col items-center justify-start w-40 transition-all duration-300 hover:scale-105">
+      <div
+        className={`
+          w-32 h-32 
+          ${shape} 
+          shadow-lg 
+          flex items-center justify-center 
+          mb-4 
+          transform transition-all duration-300 
+          hover:rotate-6 hover:shadow-xl
+          bg-gradient-to-br from-blue-50 to-purple-100
+          border border-slate-200
+        `}
+      >
+        <Icon className="w-16 h-16 text-slate-700" />
+      </div>
+      <span className="text-sm font-medium text-slate-700 text-center h-12 flex items-center">{name}</span>
+    </div>
+  );
+};
+
+const Logos: React.FC = () => {
+  const companies: Company[] = [
+    { name: 'Met Office', icon: 'SunIcon', color: 'bg-blue-500', shape: 'rounded-full' },
+    { name: 'Department for Business & Trade', icon: 'BarChartIcon', color: 'bg-blue-500', shape: 'rounded-xl' },
+    { name: 'Patch Consultancy', icon: 'PaperPlaneIcon', color: 'bg-blue-500', shape: 'rounded-full' },
+    { name: 'Gigabyte Software', icon: 'CodeIcon', color: 'bg-blue-500', shape: 'rounded-xl' },
+    { name: 'Elev8 Exchange', icon: 'PieChartIcon', color: 'bg-blue-500', shape: 'rounded-full' },
+    { name: 'Tech Innovators', icon: 'LightningBoltIcon', color: 'bg-blue-500', shape: 'rounded-xl' },
+    { name: 'Global Systems', icon: 'GlobeIcon', color: 'bg-blue-500', shape: 'rounded-full' },
+    { name: 'Data Dynamics', icon: 'CubeIcon', color: 'bg-blue-500', shape: 'rounded-xl' },
   ];
 
   return (
@@ -223,24 +258,14 @@ function Logos() {
         <div className="relative">
           <div className="flex space-x-12 animate-marquee">
             {[...companies, ...companies].map((company, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-start w-40 transition-all duration-300 hover:scale-105"
-              >
-                <div className="w-32 h-32 bg-white rounded-xl shadow-lg flex items-center justify-center mb-4 transform transition-all duration-300 hover:rotate-6 hover:shadow-xl">
-                  {React.cloneElement(company.icon, {
-                    className: "w-16 h-16 text-indigo-600"
-                  })}
-                </div>
-                <span className="text-sm font-medium text-slate-700 text-center h-12 flex items-center">{company.name}</span>
-              </div>
+              <LogoBox key={index} {...company} />
             ))}
           </div>
         </div>
       </div>
     </section>
   );
-}
+};
 
 function Benefits() {
   const benefitIcons = [
@@ -302,6 +327,13 @@ function HowItWorks() {
     <Icons.RocketIcon />,
   ];
 
+  const steps = [
+    { title: 'Discover', number: '01', description: 'We collaborate closely with you to understand your vision, goals, and target audience. Through in-depth research and analysis, we align our strategies with your objectives.' },
+    { title: 'Design', number: '02', description: 'Our skilled designers transform ideas into visually engaging and intuitive user interfaces. We focus on UX and UI principles to ensure appealing and seamless navigation.' },
+    { title: 'Build', number: '03', description: 'Our dedicated development team brings designs to life using cutting-edge technologies and best coding practices. We maintain regular feedback loops for transparency.' },
+    { title: 'Deploy', number: '04', description: 'We ensure a smooth transition from development to the live environment with minimal downtime. Post-launch support and maintenance services are provided for sustained excellence.' },
+  ];
+
   return (
     <section className="py-24 bg-gradient-to-b from-white to-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -309,37 +341,31 @@ function HowItWorks() {
           How It Works
         </h2>
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-indigo-200 hidden lg:block"></div>
-
-          <div className="space-y-16 lg:space-y-24">
-            {[
-              { title: 'Discover', number: '01', description: 'We collaborate closely with you to understand your vision, goals, and target audience. Through in-depth research and analysis, we align our strategies with your objectives.' },
-              { title: 'Design', number: '02', description: 'Our skilled designers transform ideas into visually engaging and intuitive user interfaces. We focus on UX and UI principles to ensure appealing and seamless navigation.' },
-              { title: 'Build', number: '03', description: 'Our dedicated development team brings designs to life using cutting-edge technologies and best coding practices. We maintain regular feedback loops for transparency.' },
-              { title: 'Deploy', number: '04', description: 'We ensure a smooth transition from development to the live environment with minimal downtime. Post-launch support and maintenance services are provided for sustained excellence.' },
-            ].map((step, index) => (
-              <div key={index} className={`flex flex-col lg:flex-row items-center ${index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`} data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}>
-                <div className="lg:w-1/2 mb-8 lg:mb-0">
-                  <Card className="relative overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-                    <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-indigo-500 to-purple-500"></div>
-                    <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50">
-                      <div className="flex items-center space-x-4">
-                        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-100 text-indigo-600">
-                          {React.cloneElement(stepIcons[index], { className: "w-6 h-6" })}
-                        </div>
-                        <div>
-                          <CardTitle className="text-2xl font-bold text-slate-800">{step.title}</CardTitle>
-                          <CardDescription className="text-indigo-600 font-semibold">{step.number}</CardDescription>
-                        </div>
+          <div className="space-y-24 md:container md:mx-auto md:px-20">
+            {steps.map((step, index) => (
+              <div key={index} className="relative" data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}>
+                <Card className={`
+                  relative overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl
+                  lg:w-2/3 ${index % 2 === 0 ? 'lg:ml-auto' : ''}
+                  ${index !== 0 ? 'lg:-mt-12' : ''}
+                `}>
+                  <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-indigo-500 to-purple-500"></div>
+                  <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50">
+                    <div className="flex items-center space-x-4">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-100 text-indigo-600">
+                        {React.cloneElement(stepIcons[index], { className: "w-6 h-6" })}
                       </div>
-                    </CardHeader>
-                    <CardContent className="pt-4">
-                      <p className="text-slate-600 leading-relaxed">{step.description}</p>
-                    </CardContent>
-                  </Card>
-                </div>
-                <div className="lg:w-1/2 flex justify-center">
+                      <div>
+                        <CardTitle className="text-2xl font-bold text-slate-800">{step.title}</CardTitle>
+                        <CardDescription className="text-indigo-600 font-semibold">{step.number}</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-4">
+                    <p className="text-slate-600 leading-relaxed">{step.description}</p>
+                  </CardContent>
+                </Card>
+                <div className={`absolute top-0 ${index % 2 === 0 ? 'left-0' : 'right-0'} lg:top-6`}>
                   <div className="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold text-xl shadow-lg">
                     {step.number}
                   </div>
@@ -350,7 +376,7 @@ function HowItWorks() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function Contact() {
