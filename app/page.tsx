@@ -289,44 +289,43 @@ function Logos() {
   interface Company {
     name: string;
     imageUrl: string;
+    index: number
   }
 
-  interface LogoBoxProps extends Company {}
-
-  const LogoBox: React.FC<LogoBoxProps> = ({ imageUrl, name }) => {
+  const LogoBox: React.FC<Company> = ({ imageUrl, name, index }) => {
     return (
-      <div className="flex items-center justify-center w-48 h-24 mx-4 transition-all duration-300 hover:scale-110">
-        <div className="relative w-full h-full">
-          <Image
-            src={imageUrl}
-            alt={name}
-            layout="fill"
-            objectFit="contain"
-            className="transition-all duration-300 filter brightness-0 hover:brightness-100 hover:filter-none"
-          />
-        </div>
+      <div className="flex items-center justify-center w-80 h-40 mx-8 transition-all duration-300">
+        <Image
+          src={imageUrl}
+          alt={name}
+          width={240}
+          height={120}
+          objectFit="contain"
+          className="transition-all duration-300 filter brightness-0 opacity-70 hover:filter-none hover:opacity-100"
+          data-aos="fade-up"
+          data-aos-delay={(index * 100).toString()} 
+        />
       </div>
     );
   };
 
   const companies: Company[] = [
-    { name: 'Met Office', imageUrl: 'https://www.metoffice.gov.uk/webfiles/1725362600156/images/logos/mo-green-white.svg' },
-    { name: 'Department for Business & Trade', imageUrl: 'https://ukskillspartnership.org.uk/moogryce/2023/03/DBT_Red-transparent-background.png' },
-    { name: 'Gigabyte Software', imageUrl: 'https://www.gigabyte.software/assets/images/logo/logo-dark.svg' },
-    { name: 'Elev8 Exchange', imageUrl: 'https://www.elev8exchange.com/assets/images/logo.webp' },
+    { name: 'Met Office', imageUrl: 'https://www.metoffice.gov.uk/webfiles/1725362600156/images/logos/mo-green-white.svg', index: 0 },
+    { name: 'Department for Business & Trade', imageUrl: 'https://ukskillspartnership.org.uk/moogryce/2023/03/DBT_Red-transparent-background.png', index: 1 },
+    { name: 'Gigabyte Software', imageUrl: 'https://www.gigabyte.software/assets/images/logo/logo-dark.svg', index: 2 },
+    { name: 'Elev8 Exchange', imageUrl: 'https://www.elev8exchange.com/assets/images/logo.webp', index: 3 },
   ];
 
-  // Repeat the companies array to fill out the carousel
-  const extendedCompanies = [...companies, ...companies, ...companies];
+  const extendedCompanies = [...companies];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-white to-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 data-aos="fade-up" className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+        <h2 data-aos="fade-up" className="text-4xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
           Trusted by Industry Leaders
         </h2>
         <div className="relative">
-          <div className="flex animate-marquee">
+          <div className="flex">
             {extendedCompanies.map((company, index) => (
               <LogoBox key={index} {...company} />
             ))}
