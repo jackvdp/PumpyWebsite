@@ -2,22 +2,22 @@
 
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, Droplet as WaterIcon } from 'lucide-react';
+import { Menu, X, Droplet as WaterIcon } from 'lucide-react';
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
 import * as Icons from '@radix-ui/react-icons';
+import { motion } from 'framer-motion';
+import { RocketIcon, LightningBoltIcon, CodeIcon } from '@radix-ui/react-icons';
 
 export default function HomePage() {
 
@@ -132,46 +132,128 @@ function Navigation() {
 
 function Hero() {
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 h-screen flex items-center overflow-hidden">
+    <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 min-h-screen flex items-center overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-      <div className="absolute -bottom-8 left-20 w-64 h-64 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-
+      <motion.div
+        className="absolute top-0 left-0 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+        animate={{
+          scale: [1, 1.1, 1],
+          x: [0, 10, 0],
+          y: [0, 15, 0],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+      />
+      <motion.div
+        className="absolute top-0 right-0 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+        animate={{
+          scale: [1, 1.2, 1],
+          x: [0, -15, 0],
+          y: [0, 10, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+      />
+      <motion.div
+        className="absolute -bottom-8 left-20 w-64 h-64 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70"
+        animate={{
+          scale: [1, 1.1, 1],
+          x: [0, 20, 0],
+          y: [0, -10, 0],
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+      />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="text-center">
-          <h1 className="text-4xl tracking-tight font-extrabold text-slate-900 sm:text-5xl md:text-6xl">
-            <span data-aos="fade-down" data-aos-duration="1000" className="block">Elevate Your Digital Presence</span>
-            <span data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" className="block text-indigo-600">with Pumpy</span>
-          </h1>
-          <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" className="mt-3 max-w-md mx-auto text-base text-slate-600 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-            Crafting exceptional websites and apps for businesses that want to stand out.
-          </p>
-          <div data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="600" className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+          <motion.h1
+            className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600">
+              Ignite Your Digital Potential
+            </span>
+            <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600">
+              with Pumpy
+            </span>
+          </motion.h1>
+          <motion.p
+            className="mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl text-slate-700"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Transforming ideas into extraordinary digital experiences. We craft cutting-edge websites and apps that captivate, engage, and drive success.
+          </motion.p>
+          <motion.div
+            className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             <GradientButton />
-          </div>
+          </motion.div>
+          <motion.div
+            className="mt-10 flex justify-center space-x-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            {[
+              { icon: RocketIcon, text: "Launch Faster" },
+              { icon: LightningBoltIcon, text: "Boost Performance" },
+              { icon: CodeIcon, text: "Cutting-edge Tech" },
+            ].map((item, index) => (
+              <div key={index} className="flex flex-col items-center">
+                <div className="p-3 bg-white rounded-full shadow-md">
+                  <item.icon className="w-6 h-6 text-indigo-600" />
+                </div>
+                <span className="mt-2 text-sm font-medium text-slate-700">{item.text}</span>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
-
       {/* Animated lines */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[200%] aspect-[1/0.7] [mask-image:linear-gradient(to_bottom,white,transparent)]">
           <div className="flex flex-col items-center">
             {[...Array(20)].map((_, index) => (
-              <div
+              <motion.div
                 key={index}
                 className="w-full h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent"
                 style={{
-                  transform: `translateY(${index * 12}px) translateZ(0) scaleY(0.5)`,
-                  opacity: 1 - index * 0.05
+                  translateY: index * 12,
+                  scaleY: 0.5,
+                  opacity: 1 - index * 0.05,
                 }}
-              ></div>
+                animate={{
+                  translateX: ["-5%", "5%", "-5%"],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: index * 0.1,
+                }}
+              />
             ))}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function GradientButton() {
@@ -202,23 +284,24 @@ function GradientButton() {
   );
 };
 
-type RadixIconType = keyof typeof Icons;
+function Logos() {
+  type RadixIconType = keyof typeof Icons;
 
-interface Company {
-  name: string;
-  icon: RadixIconType;
-  color: string;
-  shape: 'rounded-full' | 'rounded-xl';
-}
+  interface Company {
+    name: string;
+    icon: RadixIconType;
+    color: string;
+    shape: 'rounded-full' | 'rounded-xl';
+  }
 
-interface LogoBoxProps extends Company { }
+  interface LogoBoxProps extends Company { }
 
-const LogoBox: React.FC<LogoBoxProps> = ({ icon, name, shape }) => {
-  const Icon = Icons[icon];
-  return (
-    <div className="flex flex-col items-center justify-start w-40 transition-all duration-300 hover:scale-105">
-      <div
-        className={`
+  const LogoBox: React.FC<LogoBoxProps> = ({ icon, name, shape }) => {
+    const Icon = Icons[icon];
+    return (
+      <div className="flex flex-col items-center justify-start w-40 transition-all duration-300 hover:scale-105">
+        <div
+          className={`
           w-32 h-32 
           ${shape} 
           shadow-lg 
@@ -229,15 +312,14 @@ const LogoBox: React.FC<LogoBoxProps> = ({ icon, name, shape }) => {
           bg-gradient-to-br from-blue-50 to-purple-100
           border border-slate-200
         `}
-      >
-        <Icon className="w-16 h-16 text-slate-700" />
+        >
+          <Icon className="w-16 h-16 text-slate-700" />
+        </div>
+        <span className="text-sm font-medium text-slate-700 text-center h-12 flex items-center">{name}</span>
       </div>
-      <span className="text-sm font-medium text-slate-700 text-center h-12 flex items-center">{name}</span>
-    </div>
-  );
-};
+    );
+  };
 
-const Logos: React.FC = () => {
   const companies: Company[] = [
     { name: 'Met Office', icon: 'SunIcon', color: 'bg-blue-500', shape: 'rounded-full' },
     { name: 'Department for Business & Trade', icon: 'BarChartIcon', color: 'bg-blue-500', shape: 'rounded-xl' },
@@ -269,46 +351,47 @@ const Logos: React.FC = () => {
 
 function Benefits() {
   const benefitIcons = [
-    <Icons.MixerVerticalIcon />,
-    <Icons.LightningBoltIcon />,
-    <Icons.PersonIcon />,
-    <Icons.TimerIcon />,
-    <Icons.UpdateIcon />,
-    <Icons.DashboardIcon />,
+    Icons.MixerVerticalIcon,
+    Icons.LightningBoltIcon,
+    Icons.PersonIcon,
+    Icons.TimerIcon,
+    Icons.UpdateIcon,
+    Icons.DashboardIcon,
+  ];
+
+  const benefits = [
+    { title: 'Tailored Solutions', description: 'Custom-built websites and apps that perfectly fit your unique business needs.' },
+    { title: 'Cutting-Edge Technology', description: 'We use the latest tech stack to ensure your digital presence is future-proof.' },
+    { title: 'Independent Developer', description: 'Direct communication and personalized attention throughout your project.' },
+    { title: 'Rapid Turnaround', description: 'Efficient processes that deliver high-quality results in record time.' },
+    { title: 'Ongoing Support', description: "We're with you long after launch, ensuring your digital assets continue to perform." },
+    { title: 'Cost-Effective', description: 'Premium quality without the premium price tag of larger agencies.' },
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
+    <section className="py-12 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 data-aos="fade-up" className="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+        <h2 data-aos="fade-up" className="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
           Why Choose Pumpy?
         </h2>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            { title: 'Tailored Solutions', description: 'Custom-built websites and apps that perfectly fit your unique business needs.' },
-            { title: 'Cutting-Edge Technology', description: 'We use the latest tech stack to ensure your digital presence is future-proof.' },
-            { title: 'Independent Developer', description: 'Direct communication and personalized attention throughout your project.' },
-            { title: 'Rapid Turnaround', description: 'Efficient processes that deliver high-quality results in record time.' },
-            { title: 'Ongoing Support', description: "We're with you long after launch, ensuring your digital assets continue to perform." },
-            { title: 'Cost-Effective', description: 'Premium quality without the premium price tag of larger agencies.' },
-          ].map((benefit, index) => (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {benefits.map((benefit, index) => (
             <Card
               key={index}
               data-aos="fade-up"
-              data-aos-delay={(index * 200).toString()}
+              data-aos-delay={(index * 100).toString()}
               className="overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
-              <div className="absolute top-0 right-0 w-20 h-20 bg-indigo-600 rounded-bl-full opacity-10"></div>
-              <CardHeader className="relative z-10">
-                <div className="flex items-center space-x-4">
-                  <div className="p-2 bg-indigo-100 rounded-full">
-                    {React.cloneElement(benefitIcons[index], { className: "w-6 h-6 text-indigo-600" })}
+              <CardHeader className="relative z-10 pb-2">
+                <div className="flex items-center space-x-3">
+                  <div className="p-1.5 bg-indigo-100 rounded-full">
+                    {React.createElement(benefitIcons[index], { className: "w-5 h-5 text-indigo-600" })}
                   </div>
-                  <CardTitle className="text-xl font-semibold text-slate-800">{benefit.title}</CardTitle>
+                  <CardTitle className="text-lg font-semibold text-slate-800">{benefit.title}</CardTitle>
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="mt-4 text-slate-600 leading-relaxed">{benefit.description}</p>
+                <p className="text-sm text-slate-600 leading-relaxed">{benefit.description}</p>
               </CardContent>
               <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
             </Card>
@@ -316,15 +399,15 @@ function Benefits() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function HowItWorks() {
   const stepIcons = [
-    <Icons.MagnifyingGlassIcon />,
-    <Icons.Pencil1Icon />,
-    <Icons.LightningBoltIcon />,
-    <Icons.RocketIcon />,
+    Icons.MagnifyingGlassIcon,
+    Icons.Pencil1Icon,
+    Icons.LightningBoltIcon,
+    Icons.RocketIcon,
   ];
 
   const steps = [
@@ -335,38 +418,38 @@ function HowItWorks() {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 data-aos="fade-up" className="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+    <section className="py-16 bg-gradient-to-b from-white to-slate-50">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 data-aos="fade-up" className="text-3xl font-bold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
           How It Works
         </h2>
         <div className="relative">
-          <div className="space-y-24 md:container md:mx-auto md:px-20">
+          <div className="space-y-16">
             {steps.map((step, index) => (
               <div key={index} className="relative" data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}>
                 <Card className={`
-                  relative overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl
-                  lg:w-2/3 ${index % 2 === 0 ? 'lg:ml-auto' : ''}
-                  ${index !== 0 ? 'lg:-mt-12' : ''}
+                  relative overflow-hidden transition-all duration-300 hover:shadow-xl
+                  lg:w-3/4 ${index % 2 === 0 ? 'lg:ml-auto' : ''}
+                  ${index !== 0 ? 'lg:-mt-8' : ''}
                 `}>
                   <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-indigo-500 to-purple-500"></div>
-                  <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-indigo-100 text-indigo-600">
-                        {React.cloneElement(stepIcons[index], { className: "w-6 h-6" })}
+                  <CardHeader className="bg-gradient-to-r from-indigo-50 to-purple-50 pb-2">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-100 text-indigo-600">
+                        {React.createElement(stepIcons[index], { className: "w-5 h-5" })}
                       </div>
                       <div>
-                        <CardTitle className="text-2xl font-bold text-slate-800">{step.title}</CardTitle>
-                        <CardDescription className="text-indigo-600 font-semibold">{step.number}</CardDescription>
+                        <CardTitle className="text-xl font-bold text-slate-800">{step.title}</CardTitle>
+                        <CardDescription className="text-sm text-indigo-600 font-semibold">{step.number}</CardDescription>
                       </div>
                     </div>
                   </CardHeader>
-                  <CardContent className="pt-4">
-                    <p className="text-slate-600 leading-relaxed">{step.description}</p>
+                  <CardContent className="pt-2">
+                    <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
                   </CardContent>
                 </Card>
-                <div className={`absolute top-0 ${index % 2 === 0 ? 'left-0' : 'right-0'} lg:top-6`}>
-                  <div className="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                <div className={`absolute top-0 ${index % 2 === 0 ? '-left-4' : '-right-4'} lg:top-4`}>
+                  <div className="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold text-lg shadow-lg">
                     {step.number}
                   </div>
                 </div>

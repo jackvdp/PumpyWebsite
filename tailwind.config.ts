@@ -82,6 +82,10 @@ const config: Config = {
 			transitionProperty: {
 				'width': 'width'
 			},
+			fontFamily: {
+				sans: ['var(--font-geist-sans)'],
+				mono: ['var(--font-geist-mono)'],
+			}
 		}
 	},
 	variants: {
@@ -92,25 +96,25 @@ const config: Config = {
 	plugins: [
 		require("tailwindcss-animate"),
 		plugin(function ({ addUtilities }) {
-		  addUtilities({
-			'.hover-underline': {
-			  position: 'relative',
-			  '&::after': {
-				content: '""',
-				position: 'absolute',
-				width: '0',
-				height: '2px',
-				bottom: '0',
-				left: '0',
-				backgroundColor: 'currentColor',
-				transition: 'width 0.3s ease-in-out'
-			  },
-			  '&:hover::after': {
-				width: '100%'
-			  }
-			}
-		  })
+			addUtilities({
+				'.hover-underline': {
+					position: 'relative',
+					'&::after': {
+						content: '""',
+						position: 'absolute',
+						width: '0',
+						height: '2px',
+						bottom: '0',
+						left: '0',
+						backgroundColor: 'currentColor',
+						transition: 'width 0.3s ease-in-out'
+					},
+					'&:hover::after': {
+						width: '100%'
+					}
+				}
+			})
 		})
-	  ],
+	],
 };
 export default config;
