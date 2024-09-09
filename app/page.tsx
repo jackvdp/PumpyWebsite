@@ -18,6 +18,7 @@ import 'aos/dist/aos.css'
 import * as Icons from '@radix-ui/react-icons';
 import { motion } from 'framer-motion';
 import { RocketIcon, LightningBoltIcon, CodeIcon } from '@radix-ui/react-icons';
+import Image from 'next/image';
 
 export default function HomePage() {
 
@@ -285,61 +286,48 @@ function GradientButton() {
 };
 
 function Logos() {
-  type RadixIconType = keyof typeof Icons;
-
   interface Company {
     name: string;
-    icon: RadixIconType;
-    color: string;
-    shape: 'rounded-full' | 'rounded-xl';
+    imageUrl: string;
   }
 
-  interface LogoBoxProps extends Company { }
+  interface LogoBoxProps extends Company {}
 
-  const LogoBox: React.FC<LogoBoxProps> = ({ icon, name, shape }) => {
-    const Icon = Icons[icon];
+  const LogoBox: React.FC<LogoBoxProps> = ({ imageUrl, name }) => {
     return (
-      <div className="flex flex-col items-center justify-start w-40 transition-all duration-300 hover:scale-105">
-        <div
-          className={`
-          w-32 h-32 
-          ${shape} 
-          shadow-lg 
-          flex items-center justify-center 
-          mb-4 
-          transform transition-all duration-300 
-          hover:rotate-6 hover:shadow-xl
-          bg-gradient-to-br from-blue-50 to-purple-100
-          border border-slate-200
-        `}
-        >
-          <Icon className="w-16 h-16 text-slate-700" />
+      <div className="flex items-center justify-center w-48 h-24 mx-4 transition-all duration-300 hover:scale-110">
+        <div className="relative w-full h-full">
+          <Image
+            src={imageUrl}
+            alt={name}
+            layout="fill"
+            objectFit="contain"
+            className="transition-all duration-300 filter brightness-0 hover:brightness-100 hover:filter-none"
+          />
         </div>
-        <span className="text-sm font-medium text-slate-700 text-center h-12 flex items-center">{name}</span>
       </div>
     );
   };
 
   const companies: Company[] = [
-    { name: 'Met Office', icon: 'SunIcon', color: 'bg-blue-500', shape: 'rounded-full' },
-    { name: 'Department for Business & Trade', icon: 'BarChartIcon', color: 'bg-blue-500', shape: 'rounded-xl' },
-    { name: 'Patch Consultancy', icon: 'PaperPlaneIcon', color: 'bg-blue-500', shape: 'rounded-full' },
-    { name: 'Gigabyte Software', icon: 'CodeIcon', color: 'bg-blue-500', shape: 'rounded-xl' },
-    { name: 'Elev8 Exchange', icon: 'PieChartIcon', color: 'bg-blue-500', shape: 'rounded-full' },
-    { name: 'Tech Innovators', icon: 'LightningBoltIcon', color: 'bg-blue-500', shape: 'rounded-xl' },
-    { name: 'Global Systems', icon: 'GlobeIcon', color: 'bg-blue-500', shape: 'rounded-full' },
-    { name: 'Data Dynamics', icon: 'CubeIcon', color: 'bg-blue-500', shape: 'rounded-xl' },
+    { name: 'Met Office', imageUrl: 'https://www.metoffice.gov.uk/webfiles/1725362600156/images/logos/mo-green-white.svg' },
+    { name: 'Department for Business & Trade', imageUrl: 'https://ukskillspartnership.org.uk/moogryce/2023/03/DBT_Red-transparent-background.png' },
+    { name: 'Gigabyte Software', imageUrl: 'https://www.gigabyte.software/assets/images/logo/logo-dark.svg' },
+    { name: 'Elev8 Exchange', imageUrl: 'https://www.elev8exchange.com/assets/images/logo.webp' },
   ];
 
+  // Repeat the companies array to fill out the carousel
+  const extendedCompanies = [...companies, ...companies, ...companies];
+
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-slate-50 overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 data-aos="fade-up" className="text-3xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+        <h2 data-aos="fade-up" className="text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
           Trusted by Industry Leaders
         </h2>
         <div className="relative">
-          <div className="flex space-x-12 animate-marquee">
-            {[...companies, ...companies].map((company, index) => (
+          <div className="flex animate-marquee">
+            {extendedCompanies.map((company, index) => (
               <LogoBox key={index} {...company} />
             ))}
           </div>
@@ -347,7 +335,7 @@ function Logos() {
       </div>
     </section>
   );
-};
+}
 
 function Benefits() {
   const benefitIcons = [
