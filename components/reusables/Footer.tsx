@@ -1,4 +1,9 @@
-import * as Icons from '@radix-ui/react-icons';
+import {
+    TwitterLogoIcon,
+    LinkedInLogoIcon,
+    InstagramLogoIcon,
+    ArrowRightIcon
+}from '@radix-ui/react-icons';
 import React from 'react';
 
 export default function Footer() {
@@ -15,7 +20,7 @@ export default function Footer() {
               <h3 className="text-2xl font-bold text-indigo-400 mb-4">About Pumpy</h3>
               <p className="text-slate-300">Elevating digital experiences through innovative web and app development.</p>
               <a href="#" className="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition-colors">
-                Learn more <Icons.ArrowRightIcon className="ml-2 w-4 h-4" />
+                Learn more <ArrowRightIcon className="ml-2 w-4 h-4" />
               </a>
             </div>
             <div>
@@ -24,7 +29,7 @@ export default function Footer() {
                 {['About', 'Services', 'Case Studies', 'Blog', 'Contact'].map((item) => (
                   <li key={item}>
                     <a href="#" className="group flex items-center text-slate-300 hover:text-indigo-400 transition-colors">
-                      <Icons.ArrowRightIcon className="mr-2 w-4 h-4 text-indigo-500 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRightIcon className="mr-2 w-4 h-4 text-indigo-500 group-hover:translate-x-1 transition-transform" />
                       {item}
                     </a>
                   </li>
@@ -36,9 +41,9 @@ export default function Footer() {
               <p className="text-slate-300">Follow us on social media for the latest updates and insights.</p>
               <div className="flex space-x-4">
                 {[
-                  { icon: <Icons.TwitterLogoIcon />, label: 'Twitter' },
-                  { icon: <Icons.LinkedInLogoIcon />, label: 'LinkedIn' },
-                  { icon: <Icons.InstagramLogoIcon />, label: 'Instagram' },
+                  { icon: <TwitterLogoIcon />, label: 'Twitter' },
+                  { icon: <LinkedInLogoIcon />, label: 'LinkedIn' },
+                  { icon: <InstagramLogoIcon />, label: 'Instagram' },
                 ].map((social, index) => (
                   <a
                     key={index}
