@@ -2,24 +2,19 @@
 
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Menu, X, Droplet as WaterIcon } from 'lucide-react';
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
-import * as Icons from '@radix-ui/react-icons';
 import { motion } from 'framer-motion';
 import { RocketIcon, LightningBoltIcon, CodeIcon, ChevronDownIcon } from '@radix-ui/react-icons';
-import ScrollTracker from './reusables/ScrollTracker';
+import ScrollTracker from '../components/reusables/ScrollTracker';
 import Image from 'next/image';
+import * as Icons from '@radix-ui/react-icons';
+import Navigation from '@/components/reusables/Navigation';
+import Footer from '@/components/reusables/Footer';
 
 export default function HomePage() {
   useEffect(() => {
@@ -39,96 +34,6 @@ export default function HomePage() {
       </main>
       <Footer />
     </div>
-  );
-}
-
-function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-      ? 'bg-white/70 backdrop-blur-md shadow-md'
-      : 'bg-gradient-to-r from-white/30 to-indigo-100/30 backdrop-blur-sm'
-      }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex">
-            <div className="flex-shrink-0 flex items-center">
-              <div className="flex items-center space-x-2 group">
-                <div className="relative">
-                  <WaterIcon
-                    className={`w-8 h-8 transform transition-all duration-300 group-hover:rotate-180 ${isScrolled ? 'text-indigo-600' : 'text-indigo-700'
-                      }`}
-                  />
-                  <div className="absolute inset-0 bg-indigo-400 opacity-25 blur-sm rounded-full animate-pulse"></div>
-                </div>
-                <span className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r transition-all duration-300
-    ${isScrolled
-                    ? 'from-indigo-600 via-purple-600 to-indigo-600'
-                    : 'from-indigo-700 via-purple-700 to-indigo-700'
-                  }
-    bg-size-200 bg-pos-0 group-hover:bg-pos-100`}
-                >
-                  Pumpy
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="hidden sm:ml-6 sm:flex sm:items-center">
-            <NavigationMenu>
-              <NavigationMenuList>
-                {['About', 'Services', 'Case Studies', 'Blog', 'Contact'].map((item, index) => (
-                  <NavigationMenuItem key={index}>
-                    <NavigationMenuLink className={`px-3 py-2 rounded-md text-sm font-medium relative ${isScrolled ? 'text-slate-700 hover:text-indigo-900' : 'text-slate-800 hover:text-indigo-900'
-                      } hover:bg-indigo-50/20 transition-all duration-300`}>
-                      {item}
-                      <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transform scale-x-0 transition-transform duration-300 ease-in-out"></span>
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
-          <div className="sm:hidden flex items-center">
-            <button
-              onClick={toggleMenu}
-              className={`inline-flex items-center justify-center p-2 rounded-full ${isScrolled ? 'text-slate-400 hover:text-slate-500' : 'text-slate-600 hover:text-slate-700'
-                } hover:bg-indigo-100/20 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all duration-300`}
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
-      {isMenuOpen && (
-        <div className="sm:hidden">
-          <div className="pt-2 pb-3 space-y-1 bg-white/70 backdrop-blur-md">
-            {['About', 'Services', 'Case Studies', 'Blog', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`/${item.toLowerCase()}`}
-                className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-indigo-900 hover:bg-indigo-50/20 transition-all duration-300"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
-    </nav>
   );
 }
 
@@ -673,70 +578,5 @@ function Contact() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="bg-gradient-to-b from-slate-800 to-slate-900 text-white relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
-      <div className="absolute top-1/2 left-0 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse animation-delay-2000"></div>
-
-      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-indigo-400 mb-4">About Pumpy</h3>
-            <p className="text-slate-300">Elevating digital experiences through innovative web and app development.</p>
-            <a href="#" className="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition-colors">
-              Learn more <Icons.ArrowRightIcon className="ml-2 w-4 h-4" />
-            </a>
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold text-indigo-400 mb-4">Quick Links</h3>
-            <ul className="space-y-3">
-              {['About', 'Services', 'Case Studies', 'Blog', 'Contact'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="group flex items-center text-slate-300 hover:text-indigo-400 transition-colors">
-                    <Icons.ArrowRightIcon className="mr-2 w-4 h-4 text-indigo-500 group-hover:translate-x-1 transition-transform" />
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-indigo-400 mb-4">Connect</h3>
-            <p className="text-slate-300">Follow us on social media for the latest updates and insights.</p>
-            <div className="flex space-x-4">
-              {[
-                { icon: <Icons.TwitterLogoIcon />, label: 'Twitter' },
-                { icon: <Icons.LinkedInLogoIcon />, label: 'LinkedIn' },
-                { icon: <Icons.InstagramLogoIcon />, label: 'Instagram' },
-              ].map((social, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  className="p-2 bg-slate-700 rounded-full hover:bg-indigo-600 transition-colors"
-                  aria-label={social.label}
-                >
-                  {React.cloneElement(social.icon, { className: "w-5 h-5" })}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="mt-12 pt-8 border-t border-slate-700">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-slate-400">&copy; 2024 Pumpy. All rights reserved.</p>
-            <div className="flex space-x-6">
-              <a href="#" className="text-sm text-slate-400 hover:text-indigo-400 transition-colors">Privacy Policy</a>
-              <a href="#" className="text-sm text-slate-400 hover:text-indigo-400 transition-colors">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
   );
 }
