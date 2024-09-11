@@ -17,7 +17,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'
 import * as Icons from '@radix-ui/react-icons';
 import { motion } from 'framer-motion';
-import { RocketIcon, LightningBoltIcon, CodeIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import { RocketIcon, LightningBoltIcon, CodeIcon, ChevronDownIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
 
 export default function HomePage() {
@@ -132,100 +132,118 @@ function Navigation() {
 
 function Hero() {
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 min-h-screen flex items-center overflow-hidden">
-      <motion.div
-        className="absolute top-0 left-0 w-64 h-64 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-        animate={{
-          scale: [1, 1.1, 1],
-          x: [0, 10, 0],
-          y: [0, 15, 0],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-      />
-      <motion.div
-        className="absolute top-0 right-0 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-        animate={{
-          scale: [1, 1.2, 1],
-          x: [0, -15, 0],
-          y: [0, 10, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-      />
-      <motion.div
-        className="absolute -bottom-8 left-20 w-64 h-64 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-        animate={{
-          scale: [1, 1.1, 1],
-          x: [0, 20, 0],
-          y: [0, -10, 0],
-        }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-      />
+    <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 min-h-screen flex flex-col justify-between overflow-hidden">
+      {['bg-indigo-300', 'bg-purple-300', 'bg-pink-300', 'bg-blue-300', 'bg-violet-300'].map((color, index) => (
+        <motion.div
+          key={index}
+          className={`absolute w-64 h-64 ${color} rounded-full mix-blend-multiply filter blur-xl opacity-50`}
+          animate={{
+            scale: [1, 1.2, 1],
+            x: [0, index % 2 === 0 ? 50 : -50, 0],
+            y: [0, index % 2 === 0 ? 30 : -30, 0],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 15 + index * 2,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut",
+          }}
+          style={{
+            top: `${(index * 20) % 100}%`,
+            left: `${(index * 25) % 100}%`,
+          }}
+        />
+      ))}
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <div className="text-center lg:text-left lg:flex lg:items-center lg:justify-between">
-          <div className="lg:w-1/2 px-2">
-            <motion.h1
-              className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+      {/* Main content */}
+      <div className="flex-grow flex items-center pt-16">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+          <div className="text-center lg:text-left lg:flex lg:items-center lg:justify-between">
+            <motion.div
+              className="lg:w-1/2 px-2"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600">
-                Ignite Your Digital Potential
-              </span>
-              <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600">
-                with Pumpy
-              </span>
-            </motion.h1>
-            <motion.p
-              className="mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl text-slate-700"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              <motion.h1
+                className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 animate-gradient">
+                  Ignite Your Digital Potential
+                </span>
+                <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 animate-gradient">
+                  with Pumpy
+                </span>
+              </motion.h1>
+              <motion.p
+                className="mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl text-slate-700"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                Transforming ideas into extraordinary digital experiences. We craft cutting-edge websites and apps that captivate, engage, and drive success.
+              </motion.p>
+              <motion.div
+                className="mt-5 w-full sm:w-auto md:mt-8 flex justify-center lg:justify-start"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                <GradientButton />
+              </motion.div>
+            </motion.div>
+            <motion.div
+              className="mt-10 lg:mt-0 px-2 lg:w-1/2 relative"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Transforming ideas into extraordinary digital experiences. We craft cutting-edge websites and apps that captivate, engage, and drive success.
-            </motion.p>
-            <motion.div
-              className="mt-5 w-full sm:w-auto md:mt-8 flex justify-center lg:justify-start"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <GradientButton />
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg opacity-20 blur-lg"
+                animate={{
+                  scale: [1, 1.05, 1],
+                  rotate: [0, 5, 0],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+              <motion.div
+                animate={{
+                  y: [0, -10, 0],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              >
+                <Image
+                  src="https://as1.ftcdn.net/v2/jpg/01/87/22/46/1000_F_187224620_rua9RBMacFdQ3RVDAL28SEioxrKD8ETp.jpg"
+                  alt="Digital Transformation Illustration"
+                  width={600}
+                  height={400}
+                  className="rounded-lg shadow-2xl relative z-10"
+                />
+              </motion.div>
             </motion.div>
           </div>
-          <motion.div
-            className="mt-10 lg:mt-0 px-2 lg:w-1/2"
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <Image
-              src="https://as1.ftcdn.net/v2/jpg/01/87/22/46/1000_F_187224620_rua9RBMacFdQ3RVDAL28SEioxrKD8ETp.jpg"
-              alt="Digital Transformation Illustration"
-              width={600}
-              height={400}
-              className="rounded-lg shadow-2xl"
-            />
-          </motion.div>
         </div>
+      </div>
+
+      {/* Features aligned to bottom */}
+      <div className="w-full py-6">
         <motion.div
-          className="mt-10 flex flex-wrap justify-center gap-8"
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-center gap-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
         >
           {[
             { icon: RocketIcon, text: "Launch Faster" },
@@ -234,39 +252,37 @@ function Hero() {
           ].map((item, index) => (
             <motion.div
               key={index}
-              className="flex flex-col items-center group"
-              whileHover={{ scale: 1.05 }}
+              className="flex items-center space-x-3 cursor-pointer"
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{
+                duration: 0.3,
+                scale: {
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 10
+                }
+              }}
             >
-              <div className="relative p-4 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-300">
-                <div className="absolute inset-0 bg-white rounded-2xl transform scale-[0.96] group-hover:scale-[0.92] transition-transform duration-300"></div>
-                <div className="relative">
-                  <item.icon className="w-8 h-8 text-indigo-600 group-hover:text-indigo-700 transition-colors duration-300" />
-                </div>
-                <div className="absolute inset-0 bg-indigo-200 rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-              </div>
               <motion.div
-                className="mt-3 text-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg shadow-lg"
+                whileHover={{ rotate: 5 }}
               >
-                <span className="relative inline-block">
-                  <span className="relative z-10 text-sm font-bold text-slate-500 group-hover:text-indigo-600 transition-colors duration-300">
-                    {item.text}
-                  </span>
-                  <span className="absolute inset-x-0 bottom-0 h-2 bg-indigo-200 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                </span>
+                <item.icon className="w-6 h-6 text-white" />
               </motion.div>
+              <span className="text-sm font-bold text-gray-800">
+                {item.text}
+              </span>
             </motion.div>
           ))}
         </motion.div>
+        <ScrollIndicator />
       </div>
 
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Background lines animation */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[200%] aspect-[1/0.7] [mask-image:linear-gradient(to_bottom,white,transparent)]">
           <div className="flex flex-col items-center">
             {[...Array(20)].map((_, index) => (
@@ -279,7 +295,8 @@ function Hero() {
                   opacity: 1 - index * 0.05,
                 }}
                 animate={{
-                  translateX: ["-5%", "5%", "-5%"],
+                  translateX: ["-10%", "10%", "-10%"],
+                  scaleY: [0.5, 1, 0.5],
                 }}
                 transition={{
                   duration: 8,
@@ -323,6 +340,36 @@ function GradientButton() {
     </Button>
   );
 }
+
+function ScrollIndicator() {
+  const scrollToBenefits = () => {
+    const benefitsSection = document.getElementById('benefits');
+    if (benefitsSection) {
+      const yOffset = -24;
+      const y = benefitsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <motion.div
+      className="cursor-pointer mt-6"
+      animate={{
+        y: [0, 10, 0],
+      }}
+      transition={{
+        duration: 1.5,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+      onClick={scrollToBenefits}
+    >
+      <ChevronDownIcon className="w-8 h-8 text-indigo-600 mx-auto" />
+    </motion.div>
+  );
+}
+
 
 function Logos() {
   interface Company {
@@ -395,7 +442,7 @@ function Benefits() {
   ];
 
   return (
-    <section className="py-12 bg-gradient-to-b from-slate-50 to-white">
+    <section className="py-12 bg-gradient-to-b from-slate-50 to-white" id='benefits'>
       <div className="absolute top-32 left-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
 
@@ -473,9 +520,9 @@ function HowItWorks() {
                       </linearGradient>
                     </defs>
                     <text
-                      x="50%" 
-                      y="50%" 
-                      dominantBaseline="middle" 
+                      x="50%"
+                      y="50%"
+                      dominantBaseline="middle"
                       textAnchor="middle"
                       fontSize="80"
                       fontWeight="bold"
