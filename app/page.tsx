@@ -18,6 +18,7 @@ import 'aos/dist/aos.css'
 import * as Icons from '@radix-ui/react-icons';
 import { motion } from 'framer-motion';
 import { RocketIcon, LightningBoltIcon, CodeIcon, ChevronDownIcon } from '@radix-ui/react-icons';
+import ScrollTracker from './reusables/ScrollTracker';
 import Image from 'next/image';
 
 export default function HomePage() {
@@ -27,6 +28,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <ScrollTracker />
       <Navigation />
       <main className="">
         <Hero />
@@ -369,7 +371,6 @@ function ScrollIndicator() {
     </motion.div>
   );
 }
-
 
 function Logos() {
   interface Company {
