@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Menu, X, Droplet as WaterIcon } from 'lucide-react';
 import {
     NavigationMenu,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-  } from "@/components/ui/navigation-menu";
+} from "@/components/ui/navigation-menu";
 
 export default function Navigation() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,6 +23,8 @@ export default function Navigation() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const navItems = ['About', 'Services', 'Case Studies', 'Blog', 'Contact'];
 
     return (
         <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
@@ -55,13 +58,22 @@ export default function Navigation() {
                     <div className="hidden sm:ml-6 sm:flex sm:items-center">
                         <NavigationMenu>
                             <NavigationMenuList>
-                                {['About', 'Services', 'Case Studies', 'Blog', 'Contact'].map((item, index) => (
+                                {navItems.map((item, index) => (
                                     <NavigationMenuItem key={index}>
-                                        <NavigationMenuLink className={`px-3 py-2 rounded-md text-sm font-medium relative ${isScrolled ? 'text-slate-700 hover:text-indigo-900' : 'text-slate-800 hover:text-indigo-900'
-                                            } hover:bg-indigo-50/20 transition-all duration-300`}>
-                                            {item}
-                                            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transform scale-x-0 transition-transform duration-300 ease-in-out"></span>
-                                        </NavigationMenuLink>
+                                        <Link href={`/${item.toLowerCase().replace(' ', '-')}`} passHref legacyBehavior>
+                                            <NavigationMenuLink>
+                                                <span className={`
+                            px-3 py-2 rounded-md text-sm font-medium relative 
+                            ${isScrolled ? 'text-slate-700' : 'text-slate-800'}
+                            transition-all duration-300 
+                            hover:text-indigo-600
+                            nav-item-underline
+                        `}>
+                                                    {item}
+                                                    <span className="nav-item-underline-bar"></span>
+                                                </span>
+                                            </NavigationMenuLink>
+                                        </Link>
                                     </NavigationMenuItem>
                                 ))}
                             </NavigationMenuList>

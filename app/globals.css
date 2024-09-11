@@ -153,10 +153,6 @@ body {
   animation-delay: 4s;
 }
 
-.NavigationMenuLink:hover>span {
-  transform: scaleX(100%);
-}
-
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -181,4 +177,23 @@ body::-webkit-scrollbar {
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.nav-item-underline {
+  position: relative;
+}
+
+.nav-item-underline-bar {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #4f46e5; /* Indigo-600 */
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-item-underline:hover .nav-item-underline-bar {
+  transform: scaleX(1);
 }
