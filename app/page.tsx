@@ -4,17 +4,15 @@ import React from 'react';
 import { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
 import { motion } from 'framer-motion';
-import { 
-  RocketIcon, 
-  LightningBoltIcon, 
-  CodeIcon, 
-  ChevronDownIcon, 
-  ChatBubbleIcon, 
+import {
+  RocketIcon,
+  LightningBoltIcon,
+  CodeIcon,
+  ChevronDownIcon,
+  ChatBubbleIcon,
   MixerVerticalIcon,
   PersonIcon,
   TimerIcon,
@@ -22,19 +20,13 @@ import {
   DashboardIcon,
   MagnifyingGlassIcon,
   Pencil1Icon,
-  PaperPlaneIcon,
-  IdCardIcon,
-  MobileIcon,
-  EnvelopeClosedIcon,
-  TwitterLogoIcon,
-  LinkedInLogoIcon,
-  InstagramLogoIcon
 } from '@radix-ui/react-icons';
 import ScrollTracker from '../components/reusables/ScrollTracker';
 import Image from 'next/image';
 import Navigation from '@/components/reusables/Navigation';
 import Footer from '@/components/reusables/Footer';
-import AnimatedCursor from "react-animated-cursor"
+import Contact from '@/components/reusables/Contact';
+import CustomCursor from '@/components/reusables/CustomCursor';
 
 export default function HomePage() {
   useEffect(() => {
@@ -43,27 +35,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <AnimatedCursor
-        innerSize={8}
-        outerSize={35}
-        color='193, 11, 111'
-        outerAlpha={0.2}
-        innerScale={0.7}
-        outerScale={5}
-        clickables={[
-          'a',
-          'input[type="text"]',
-          'input[type="email"]',
-          'input[type="number"]',
-          'input[type="submit"]',
-          'input[type="image"]',
-          'label[for]',
-          'select',
-          'textarea',
-          'button',
-          '.link'
-        ]}
-      />
+      <CustomCursor />
       <ScrollTracker />
       <Navigation />
       <main className="">
@@ -79,6 +51,63 @@ export default function HomePage() {
 }
 
 function Hero() {
+  function GradientButton() {
+    return (
+      <Button
+        size="lg"
+        className="
+          rounded-full 
+          px-10 
+          py-6 
+          text-lg
+          bg-gradient-to-r from-indigo-600 to-purple-600 
+          hover:from-indigo-700 hover:to-purple-700 
+          text-white 
+          font-semibold 
+          transition-all 
+          duration-300 
+          hover:shadow-lg 
+          hover:scale-105
+          flex 
+          items-center 
+          justify-center
+        "
+      >
+        <ChatBubbleIcon className="mr-3 h-6 w-6" />
+        Let's Talk
+      </Button>
+    );
+  }
+
+  function ScrollIndicator() {
+    const scrollToBenefits = () => {
+      const benefitsSection = document.getElementById('benefits');
+      if (benefitsSection) {
+        const yOffset = -24;
+        const y = benefitsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    };
+
+    return (
+      <motion.div
+        className="cursor-pointer mt-6"
+        animate={{
+          y: [0, 10, 0],
+        }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        onClick={scrollToBenefits}
+      >
+        <ChevronDownIcon className="w-8 h-8 text-indigo-600 mx-auto" />
+      </motion.div>
+    );
+  }
+
   return (
     <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 min-h-screen flex flex-col justify-between overflow-hidden">
       {['bg-indigo-300', 'bg-purple-300', 'bg-pink-300', 'bg-blue-300', 'bg-violet-300'].map((color, index) => (
@@ -258,63 +287,6 @@ function Hero() {
         </div>
       </div>
     </section>
-  );
-}
-
-function GradientButton() {
-  return (
-    <Button
-      size="lg"
-      className="
-        rounded-full 
-        px-10 
-        py-6 
-        text-lg
-        bg-gradient-to-r from-indigo-600 to-purple-600 
-        hover:from-indigo-700 hover:to-purple-700 
-        text-white 
-        font-semibold 
-        transition-all 
-        duration-300 
-        hover:shadow-lg 
-        hover:scale-105
-        flex 
-        items-center 
-        justify-center
-      "
-    >
-      <ChatBubbleIcon className="mr-3 h-6 w-6" />
-      Let's Talk
-    </Button>
-  );
-}
-
-function ScrollIndicator() {
-  const scrollToBenefits = () => {
-    const benefitsSection = document.getElementById('benefits');
-    if (benefitsSection) {
-      const yOffset = -24;
-      const y = benefitsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <motion.div
-      className="cursor-pointer mt-6"
-      animate={{
-        y: [0, 10, 0],
-      }}
-      transition={{
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-      onClick={scrollToBenefits}
-    >
-      <ChevronDownIcon className="w-8 h-8 text-indigo-600 mx-auto" />
-    </motion.div>
   );
 }
 
@@ -519,103 +491,6 @@ function HowItWorks() {
               </div>
             ))}
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Contact() {
-  return (
-    <section className="py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-      <div className="absolute top-32 left-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <h2 data-aos="fade-up" className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-          Get in Touch
-        </h2>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Card className="bg-white shadow-xl" data-aos="fade-right">
-              <CardHeader>
-                <div className="flex items-center space-x-2">
-                  <div className="p-2 bg-indigo-100 rounded-full">
-                    <EnvelopeClosedIcon className="w-6 h-6 text-indigo-600" />
-                  </div>
-                  <CardTitle className="text-2xl font-bold text-slate-800">Contact Form</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <form className="space-y-6">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium text-slate-700">Your Name</label>
-                    <Input id="name" placeholder="John Doe" className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium text-slate-700">Your Email</label>
-                    <Input id="email" type="email" placeholder="john@example.com" className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium text-slate-700">Your Message</label>
-                    <Textarea id="message" placeholder="How can we help you?" className="w-full px-3 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
-                  </div>
-                  <Button type="submit" className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
-                    <PaperPlaneIcon className="mr-2 h-4 w-4" /> Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="lg:flex lg:flex-col lg:justify-between" data-aos="fade-left">
-              <Card className="bg-white shadow-xl mb-8">
-                <CardHeader>
-                  <div className="flex items-center space-x-2">
-                    <div className="p-2 bg-purple-100 rounded-full">
-                      <IdCardIcon className="w-6 h-6 text-purple-600" />
-                    </div>
-                    <CardTitle className="text-2xl font-bold text-slate-800">Contact Details</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="flex items-center text-slate-600">
-                    <MobileIcon className="mr-2 h-5 w-5 text-purple-500" />
-                    <span className="font-medium">Phone:</span>
-                    <a href="tel:+447831640003" className="ml-2 hover:text-purple-600 transition-colors">+44 (0) 7831640003</a>
-                  </p>
-                  <p className="flex items-center text-slate-600">
-                    <EnvelopeClosedIcon className="mr-2 h-5 w-5 text-purple-500" />
-                    <span className="font-medium">Email:</span>
-                    <a href="mailto:jack@vanderpump.tech" className="ml-2 hover:text-purple-600 transition-colors">jack@vanderpump.tech</a>
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-xl">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-4">Connect With Us</h3>
-                  <p className="mb-6">Follow us on social media for the latest updates and insights.</p>
-                  <div className="flex space-x-4">
-                    {[TwitterLogoIcon, LinkedInLogoIcon, InstagramLogoIcon].map((Icon, index) => (
-                      <a key={index} href="#" className="p-2 bg-white bg-opacity-20 rounded-full hover:bg-opacity-30 transition-all duration-300">
-                        <Icon className="w-6 h-6" />
-                      </a>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
