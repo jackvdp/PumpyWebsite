@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { useEffect } from 'react';
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import AOS from 'aos';
 import 'aos/dist/aos.css'
@@ -11,7 +10,6 @@ import {
   RocketIcon,
   LightningBoltIcon,
   CodeIcon,
-  ChevronDownIcon,
   ChatBubbleIcon,
   MixerVerticalIcon,
   PersonIcon,
@@ -27,6 +25,8 @@ import Navigation from '@/components/reusables/Navigation';
 import Footer from '@/components/reusables/Footer';
 import Contact from '@/components/reusables/Contact';
 import CustomCursor from '@/components/reusables/CustomCursor';
+import GradientButton from '@/components/reusables/GradientButton';
+import ScrollIndicator from '@/components/reusables/ScrollIndicator';
 
 export default function HomePage() {
   useEffect(() => {
@@ -51,63 +51,6 @@ export default function HomePage() {
 }
 
 function Hero() {
-  function GradientButton() {
-    return (
-      <Button
-        size="lg"
-        className="
-          rounded-full 
-          px-10 
-          py-6 
-          text-lg
-          bg-gradient-to-r from-indigo-600 to-purple-600 
-          hover:from-indigo-700 hover:to-purple-700 
-          text-white 
-          font-semibold 
-          transition-all 
-          duration-300 
-          hover:shadow-lg 
-          hover:scale-105
-          flex 
-          items-center 
-          justify-center
-        "
-      >
-        <ChatBubbleIcon className="mr-3 h-6 w-6" />
-        Let's Talk
-      </Button>
-    );
-  }
-
-  function ScrollIndicator() {
-    const scrollToBenefits = () => {
-      const benefitsSection = document.getElementById('benefits');
-      if (benefitsSection) {
-        const yOffset = -24;
-        const y = benefitsSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
-
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    };
-
-    return (
-      <motion.div
-        className="cursor-pointer mt-6"
-        animate={{
-          y: [0, 10, 0],
-        }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        onClick={scrollToBenefits}
-      >
-        <ChevronDownIcon className="w-8 h-8 text-indigo-600 mx-auto" />
-      </motion.div>
-    );
-  }
-
   return (
     <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 min-h-screen flex flex-col justify-between overflow-hidden">
       {['bg-indigo-300', 'bg-purple-300', 'bg-pink-300', 'bg-blue-300', 'bg-violet-300'].map((color, index) => (
@@ -170,7 +113,11 @@ function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <GradientButton />
+                <GradientButton
+                  text="Let's Talk"
+                  Icon={ChatBubbleIcon}
+                  href="/contact"
+                />
               </motion.div>
             </motion.div>
             <motion.div
