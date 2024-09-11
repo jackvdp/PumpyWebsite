@@ -1,10 +1,7 @@
 "use client";
 
 import React from 'react';
-import { useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import AOS from 'aos';
-import 'aos/dist/aos.css'
 import { motion } from 'framer-motion';
 import {
   RocketIcon,
@@ -19,34 +16,21 @@ import {
   MagnifyingGlassIcon,
   Pencil1Icon,
 } from '@radix-ui/react-icons';
-import ScrollTracker from '../components/reusables/ScrollTracker';
 import Image from 'next/image';
-import Navigation from '@/components/reusables/Navigation';
-import Footer from '@/components/reusables/Footer';
 import Contact from '@/components/reusables/Contact';
-import CustomCursor from '@/components/reusables/CustomCursor';
 import GradientButton from '@/components/reusables/GradientButton';
 import ScrollIndicator from '@/components/reusables/ScrollIndicator';
+import Page from '@/components/reusables/Page';
 
 export default function HomePage() {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   return (
-    <div className="min-h-screen flex flex-col">
-      <CustomCursor />
-      <ScrollTracker />
-      <Navigation />
-      <main className="">
-        <Hero />
-        <Logos />
-        <Benefits />
-        <HowItWorks />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <Page>
+      <Hero />
+      <Logos />
+      <Benefits />
+      <HowItWorks />
+      <Contact />
+    </Page>
   );
 }
 
