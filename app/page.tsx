@@ -207,8 +207,8 @@ function Hero() {
                   scaleY: [0.5, 1, 0.5],
                 }}
                 transition={{
-                  duration: 8,
-                  repeat: Infinity,
+                  duration: 0,
+                  repeat: 0,
                   ease: "easeInOut",
                   delay: index * 0.1,
                 }}
