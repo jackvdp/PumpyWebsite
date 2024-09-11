@@ -197,3 +197,12 @@ body {
 .nav-item-underline:hover .nav-item-underline-bar {
   transform: scaleX(1);
 }
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(0.5); }
+}
+
+.animate-flame {
+  animation: flicker 3s ease-in-out infinite alternate;
+}
