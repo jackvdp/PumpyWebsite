@@ -34,6 +34,7 @@ import ScrollTracker from '../components/reusables/ScrollTracker';
 import Image from 'next/image';
 import Navigation from '@/components/reusables/Navigation';
 import Footer from '@/components/reusables/Footer';
+import AnimatedCursor from "react-animated-cursor"
 
 export default function HomePage() {
   useEffect(() => {
@@ -42,6 +43,27 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <AnimatedCursor
+        innerSize={8}
+        outerSize={35}
+        color='193, 11, 111'
+        outerAlpha={0.2}
+        innerScale={0.7}
+        outerScale={5}
+        clickables={[
+          'a',
+          'input[type="text"]',
+          'input[type="email"]',
+          'input[type="number"]',
+          'input[type="submit"]',
+          'input[type="image"]',
+          'label[for]',
+          'select',
+          'textarea',
+          'button',
+          '.link'
+        ]}
+      />
       <ScrollTracker />
       <Navigation />
       <main className="">
