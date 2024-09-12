@@ -7,6 +7,8 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { SmallGradientButton as GradientButton} from "./GradientButton";
+import { ChatBubbleIcon } from '@radix-ui/react-icons';
 
 const navItems = ['About', 'Services', 'Case Studies', 'Blog', 'Contact'];
 
@@ -38,7 +40,11 @@ export default function Navigation() {
                         <NavigationMenu>
                             <NavigationMenuList>
                                 {navItems.map((item, index) => (
-                                    <NavItem key={index} isScrolled={isScrolled} item={item} index={index} />
+                                   (item === "Contact") ? (
+                                        <GradientButton text="Let's talk" href="/contact" Icon={ChatBubbleIcon} />
+                                    ) : (
+                                        <NavItem key={index} isScrolled={isScrolled} item={item} index={index} />
+                                    )
                                 ))}
                             </NavigationMenuList>
                         </NavigationMenu>
