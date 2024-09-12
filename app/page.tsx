@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import {
   RocketIcon,
   LightningBoltIcon,
-  CodeIcon,
   ChatBubbleIcon,
   MixerVerticalIcon,
   PersonIcon,
@@ -36,6 +35,21 @@ export default function HomePage() {
 }
 
 function Hero() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
     <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 min-h-screen flex flex-col justify-between overflow-hidden">
       {['bg-indigo-300', 'bg-purple-300', 'bg-pink-300', 'bg-blue-300', 'bg-violet-300'].map((color, index) => (
@@ -63,88 +77,45 @@ function Hero() {
 
       {/* Main content */}
       <div className="flex-grow flex items-center pt-16">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-          <div className="text-center lg:text-left lg:flex lg:items-center lg:justify-between">
-            <motion.div
-              className="lg:w-1/2 px-2"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <motion.h1
-                className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <span className="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 animate-gradient">
-                  Ignite Your Digital Potential
-                </span>
-                <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 animate-gradient">
-                  with Pumpy
-                </span>
-              </motion.h1>
-              <motion.p
-                className="mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl text-slate-700"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                Transforming ideas into extraordinary digital experiences. We craft cutting-edge websites and apps that captivate, engage, and drive success.
-              </motion.p>
-              <motion.div
-                className="mt-5 w-full sm:w-auto md:mt-8 flex justify-center lg:justify-start"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <GradientButton
-                  text="Let's Talk"
-                  Icon={ChatBubbleIcon}
-                  href="/contact"
-                />
-              </motion.div>
-            </motion.div>
-            <motion.div
-              className="mt-10 lg:mt-0 px-2 lg:w-1/2 relative"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg opacity-20 blur-lg"
-                animate={{
-                  scale: [1, 1.05, 1],
-                  rotate: [0, 5, 0],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-              <motion.div
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              >
-                <Image
-                  src="https://as1.ftcdn.net/v2/jpg/01/87/22/46/1000_F_187224620_rua9RBMacFdQ3RVDAL28SEioxrKD8ETp.jpg"
-                  alt="Digital Transformation Illustration"
-                  width={600}
-                  height={400}
-                  className="rounded-lg shadow-2xl relative z-10"
-                />
-              </motion.div>
-            </motion.div>
-          </div>
-        </div>
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        <motion.div 
+          className="text-center lg:text-left"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h1
+            className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl"
+            variants={itemVariants}
+          >
+            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 animate-gradient">
+              Crafting Digital Solutions
+            </span>
+            <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 animate-gradient">
+              That Work for You
+            </span>
+          </motion.h1>
+          <motion.p
+            className="mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl text-slate-700"
+            variants={itemVariants}
+          >
+            We specialize in crafting bespoke websites and apps that perfectly fit your unique needs. 
+            Our agile approach ensures swift delivery, coupled with a personalized service at every step, 
+            to bring your digital vision to life quickly and effectively.
+          </motion.p>
+          <motion.div
+            className="mt-5 w-full sm:w-auto md:mt-8 flex justify-center lg:justify-start"
+            variants={itemVariants}
+          >
+            <GradientButton
+              text="Let's Discuss Your Project"
+              Icon={ChatBubbleIcon}
+              href="/contact"
+            />
+          </motion.div>
+        </motion.div>
       </div>
+    </div>
 
       {/* Features aligned to bottom */}
       <div className="w-full py-6">
@@ -155,13 +126,13 @@ function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           {[
-            { icon: RocketIcon, text: "Launch Faster" },
-            { icon: LightningBoltIcon, text: "Boost Performance" },
-            { icon: CodeIcon, text: "Cutting-edge Tech" },
+            { icon: PersonIcon, text: "Personal Service" },
+            { icon: RocketIcon, text: "Fast Delivery" },
+            { icon: LightningBoltIcon, text: "Cost-Effective" },
           ].map((item, index) => (
             <motion.div
               key={index}
-              className="flex items-center space-x-3 cursor-pointer"
+              className="flex items-center space-x-3"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
