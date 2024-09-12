@@ -21,6 +21,7 @@ import Contact from '@/components/reusables/Contact';
 import GradientButton from '@/components/reusables/GradientButton';
 import ScrollIndicator from '@/components/reusables/ScrollIndicator';
 import Page from '@/components/reusables/Page';
+import BackgroundBalls from '@/components/reusables/BackgroundBalls';
 
 export default function HomePage() {
   return (
@@ -292,7 +293,8 @@ function Benefits() {
   ];
 
   return (
-    <section className="py-12 bg-gradient-to-b from-slate-50 to-white" id='benefits'>
+    <section className="relative py-12 bg-gradient-to-b from-slate-50 to-white" id='benefits'>
+      <BackgroundBalls />
       <div className="absolute top-32 left-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
 
@@ -349,7 +351,8 @@ function HowItWorks() {
   ];
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-slate-50">
+    <section className="relative py-16 bg-gradient-to-b from-white to-slate-50">
+      <BackgroundBalls />
       <div className="absolute top-32 left-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
 
