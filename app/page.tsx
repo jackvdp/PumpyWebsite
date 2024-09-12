@@ -50,6 +50,30 @@ function Hero() {
     visible: { opacity: 1, y: 0 }
   };
 
+  const featuresContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.5, // Increase this value for more delay between items
+        delayChildren: 0.8 // Delay before the first item appears
+      }
+    }
+  };
+
+  const featureItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 10
+      }
+    }
+  };
+
   return (
     <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 min-h-screen flex flex-col justify-between overflow-hidden">
       {['bg-indigo-300', 'bg-purple-300', 'bg-pink-300', 'bg-blue-300', 'bg-violet-300'].map((color, index) => (
@@ -77,53 +101,53 @@ function Hero() {
 
       {/* Main content */}
       <div className="flex-grow flex items-center pt-16">
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
-        <motion.div 
-          className="text-center lg:text-left"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.h1
-            className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl"
-            variants={itemVariants}
-          >
-            <span className="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 animate-gradient">
-              Crafting Digital Solutions
-            </span>
-            <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 animate-gradient">
-              That Work for You
-            </span>
-          </motion.h1>
-          <motion.p
-            className="mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl text-slate-700"
-            variants={itemVariants}
-          >
-            We specialize in crafting bespoke websites and apps that perfectly fit your unique needs. 
-            Our agile approach ensures swift delivery, coupled with a personalized service at every step, 
-            to bring your digital vision to life quickly and effectively.
-          </motion.p>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
           <motion.div
-            className="mt-5 w-full sm:w-auto md:mt-8 flex justify-center lg:justify-start"
-            variants={itemVariants}
+            className="text-center lg:text-left"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <GradientButton
-              text="Let's Discuss Your Project"
-              Icon={ChatBubbleIcon}
-              href="/contact"
-            />
+            <motion.h1
+              className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl"
+              variants={itemVariants}
+            >
+              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 animate-gradient">
+                Crafting Digital Solutions
+              </span>
+              <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 animate-gradient">
+                That Work for You
+              </span>
+            </motion.h1>
+            <motion.p
+              className="mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl text-slate-700"
+              variants={itemVariants}
+            >
+              We specialize in crafting bespoke websites and apps that perfectly fit your unique needs.
+              Our agile approach ensures swift delivery, coupled with a personalized service at every step,
+              to bring your digital vision to life quickly and effectively.
+            </motion.p>
+            <motion.div
+              className="mt-5 w-full sm:w-auto md:mt-8 flex justify-center lg:justify-start"
+              variants={itemVariants}
+            >
+              <GradientButton
+                text="Let's Discuss Your Project"
+                Icon={ChatBubbleIcon}
+                href="/contact"
+              />
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
-    </div>
 
       {/* Features aligned to bottom */}
       <div className="w-full py-6">
         <motion.div
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-center gap-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          variants={featuresContainerVariants}
+          initial="hidden"
+          animate="visible"
         >
           {[
             { icon: PersonIcon, text: "Personal Service" },
@@ -133,18 +157,9 @@ function Hero() {
             <motion.div
               key={index}
               className="flex items-center space-x-3"
+              variants={featureItemVariants}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.3,
-                scale: {
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 10
-                }
-              }}
             >
               <motion.div
                 className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg shadow-lg"
