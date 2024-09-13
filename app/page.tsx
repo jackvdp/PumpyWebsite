@@ -19,6 +19,7 @@ import ScrollIndicator from '@/components/reusables/ScrollIndicator';
 import Page from '@/components/reusables/Page';
 import BackgroundBalls from '@/components/reusables/BackgroundBalls';
 import Logos from '@/components/reusables/Logos';
+import CaseStudies from '@/components/reusables/Case-Studies';
 
 export default function HomePage() {
   return (
@@ -26,6 +27,7 @@ export default function HomePage() {
       <Hero />
       <Logos />
       <Benefits />
+      <CaseStudies />
       <HowItWorks />
       <Contact />
     </Page>
