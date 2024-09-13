@@ -7,13 +7,10 @@ import {
   RocketIcon,
   LightningBoltIcon,
   ChatBubbleIcon,
-  MixerVerticalIcon,
   PersonIcon,
-  TimerIcon,
-  UpdateIcon,
-  DashboardIcon,
   MagnifyingGlassIcon,
   Pencil1Icon,
+  ArrowRightIcon
 } from '@radix-ui/react-icons';
 import Image from 'next/image';
 import Contact from '@/components/reusables/Contact';
@@ -210,39 +207,33 @@ function Hero() {
 }
 
 function Benefits() {
-  const benefitIcons = [
-    MixerVerticalIcon,
-    LightningBoltIcon,
-    PersonIcon,
-    TimerIcon,
-    UpdateIcon,
-    DashboardIcon,
-  ];
-
   const benefits = [
     {
       title: 'Personal Service',
       description:
-        'As an independent developer, I offer a truly personal service. You will have direct communication with me throughout the entire project, ensuring that your vision is fully understood and realized. I take the time to understand your unique needs and tailor bespoke solutions that align perfectly with your business objectives.',
+        'We proivde a personal experience that ensures a bespoke and tailored solution for your needs. We work with you to understand and bring to life your vision and match your business objectives.',
+      icon: PersonIcon,
     },
     {
       title: 'Fast Delivery',
       description:
-        'Leveraging efficient processes and a deep understanding of modern development practices, I deliver high-quality, customized websites and apps in a timely manner. My streamlined workflow allows for rapid turnaround times without compromising on the quality of the final product.',
+        'Deliver high-quality, customized websites and apps quickly. An efficient workflow ensures rapid turnaround times so you can start benefiting from your new digital assets sooner.',
+      icon: RocketIcon,
     },
     {
       title: 'Cost-Effective',
       description:
-        'By operating independently, I can provide premium, tailored solutions without the overhead costs associated with larger agencies. This means you receive top-quality work that is both budget-friendly and tailored to provide maximum value for your investment.',
+        'Access premium, tailored solutions without the high costs of larger agencies. Achieve top-quality results that fit your budget and maximize the value of your investment.',
+      icon: LightningBoltIcon
     },
   ];
+  
   return (
     <section className="relative py-12 bg-gradient-to-b from-slate-50 to-white" id='benefits'>
       <BackgroundBalls />
       <div className="absolute top-32 left-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 data-aos="fade-up" className="text-3xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
           Why Choose Pumpy?
         </h2>
@@ -258,7 +249,7 @@ function Benefits() {
               <CardHeader className="relative z-10 pb-2">
                 <div className="flex items-center space-x-4">
                   <div className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-md transform transition-transform group-hover:rotate-6 duration-300">
-                    {React.createElement(benefitIcons[index], { className: "w-6 h-6 text-white" })}
+                    {React.createElement(benefit.icon, { className: "w-6 h-6 text-white" })}
                   </div>
                   <CardTitle className="text-xl font-bold text-slate-800 group-hover:text-indigo-700 transition-colors duration-300">
                     {benefit.title}
@@ -274,6 +265,9 @@ function Benefits() {
             </Card>
           ))}
         </div>
+        <div className="relative z-20 flex justify-center my-8" data-aos="fade-up">
+          <GradientButton text="Find Out More" href="/about" Icon={ArrowRightIcon}/>
+        </div>
       </div>
     </section>
   );
@@ -288,10 +282,30 @@ function HowItWorks() {
   ];
 
   const steps = [
-    { title: 'Discover', number: '01', description: 'We collaborate closely with you to understand your vision, goals, and target audience. Through in-depth research and analysis, we align our strategies with your objectives.' },
-    { title: 'Design', number: '02', description: 'Our skilled designers transform ideas into visually engaging and intuitive user interfaces. We focus on UX and UI principles to ensure appealing and seamless navigation.' },
-    { title: 'Build', number: '03', description: 'Our dedicated development team brings designs to life using cutting-edge technologies and best coding practices. We maintain regular feedback loops for transparency.' },
-    { title: 'Deploy', number: '04', description: 'We ensure a smooth transition from development to the live environment with minimal downtime. Post-launch support and maintenance services are provided for sustained excellence.' },
+    {
+      title: 'Discover',
+      number: '01',
+      description: 'We collaborate closely with you to understand your vision, goals, and target audience. Through in-depth research and analysis, we align our strategies with your objectives.',
+      image: "https://as2.ftcdn.net/v2/jpg/03/03/89/59/1000_F_303895937_KBTgt7PP72JxULR548vNyxykvg2pj1Xu.jpg"
+    },
+    {
+      title: 'Design',
+      number: '02',
+      description: 'Our skilled designers transform ideas into visually engaging and intuitive user interfaces. We focus on UX and UI principles to ensure appealing and seamless navigation.',
+      image: "https://as2.ftcdn.net/v2/jpg/07/45/46/83/1000_F_745468308_L01HB9OcqDa4ZQkM2gl8B5cD59QqJAUc.jpg"
+    },
+    {
+      title: 'Build',
+      number: '03',
+      description: 'Our dedicated development team brings designs to life using cutting-edge technologies and best coding practices. We maintain regular feedback loops for transparency.',
+      image: "https://as1.ftcdn.net/v2/jpg/02/09/60/56/1000_F_209605626_jl61fimPD2rLxoVadH4D3ITQzjAOK7Eu.jpg"
+    },
+    {
+      title: 'Deploy',
+      number: '04',
+      description: 'We ensure a smooth transition from development to the live environment with minimal downtime. Post-launch support and maintenance services are provided for sustained excellence.',
+      image: "https://as2.ftcdn.net/v2/jpg/04/51/61/73/1000_F_451617336_VaJkzeco9G3wXdKQMrZLvUa9N2UY3vDe.jpg"
+    },
   ];
 
   return (
@@ -356,7 +370,7 @@ function HowItWorks() {
                     <div className="lg:w-1/3 overflow-hidden">
                       <div className="h-48 lg:h-full relative">
                         <Image
-                          src={`https://as2.ftcdn.net/v2/jpg/07/45/46/83/1000_F_745468308_L01HB9OcqDa4ZQkM2gl8B5cD59QqJAUc.jpg`}
+                          src={step.image}
                           alt={`${step.title} Process`}
                           layout="fill"
                           objectFit="cover"
