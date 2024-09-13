@@ -21,6 +21,7 @@ import GradientButton from '@/components/reusables/GradientButton';
 import ScrollIndicator from '@/components/reusables/ScrollIndicator';
 import Page from '@/components/reusables/Page';
 import BackgroundBalls from '@/components/reusables/BackgroundBalls';
+import Logos from '@/components/reusables/Logos';
 
 export default function HomePage() {
   return (
@@ -208,57 +209,6 @@ function Hero() {
   );
 }
 
-function Logos() {
-  interface Company {
-    name: string;
-    imageUrl: string;
-    index: number
-  }
-
-  const LogoBox: React.FC<Company> = ({ imageUrl, name, index }) => {
-    return (
-      <div className="flex items-center justify-center w-80 h-40 mx-8 transition-all duration-300">
-        <Image
-          src={imageUrl}
-          alt={name}
-          width={240}
-          height={120}
-          objectFit="contain"
-          className="transition-all duration-300 filter brightness-0 opacity-70 hover:filter-none hover:opacity-100"
-          data-aos="fade-up"
-          data-aos-delay={(index * 100).toString()}
-        />
-      </div>
-    );
-  };
-
-  const companies: Company[] = [
-    { name: 'Met Office', imageUrl: 'https://www.metoffice.gov.uk/webfiles/1725362600156/images/logos/mo-green-white.svg', index: 0 },
-    { name: 'Department for Business & Trade', imageUrl: 'https://ukskillspartnership.org.uk/moogryce/2023/03/DBT_Red-transparent-background.png', index: 1 },
-    { name: 'Gigabyte Software', imageUrl: 'https://www.gigabyte.software/assets/images/logo/logo-dark.svg', index: 2 },
-    { name: 'Elev8 Exchange', imageUrl: 'https://www.elev8exchange.com/assets/images/logo.webp', index: 3 },
-  ];
-
-  const extendedCompanies = [...companies];
-
-  return (
-    <section className="py-24 bg-gradient-to-b from-white to-slate-50 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 data-aos="fade-up" className="text-4xl font-bold text-center mb-8 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-          Trusted by Industry Leaders
-        </h2>
-        <div className="relative">
-          <div className="flex">
-            {extendedCompanies.map((company, index) => (
-              <LogoBox key={index} {...company} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Benefits() {
   const benefitIcons = [
     MixerVerticalIcon,
@@ -270,14 +220,22 @@ function Benefits() {
   ];
 
   const benefits = [
-    { title: 'Tailored Solutions', description: 'Custom-built websites and apps that perfectly fit your unique business needs.' },
-    { title: 'Cutting-Edge Technology', description: 'We use the latest tech stack to ensure your digital presence is future-proof.' },
-    { title: 'Independent Developer', description: 'Direct communication and personalized attention throughout your project.' },
-    { title: 'Rapid Turnaround', description: 'Efficient processes that deliver high-quality results in record time.' },
-    { title: 'Ongoing Support', description: "We're with you long after launch, ensuring your digital assets continue to perform." },
-    { title: 'Cost-Effective', description: 'Premium quality without the premium price tag of larger agencies.' },
+    {
+      title: 'Personal Service',
+      description:
+        'As an independent developer, I offer a truly personal service. You will have direct communication with me throughout the entire project, ensuring that your vision is fully understood and realized. I take the time to understand your unique needs and tailor bespoke solutions that align perfectly with your business objectives.',
+    },
+    {
+      title: 'Fast Delivery',
+      description:
+        'Leveraging efficient processes and a deep understanding of modern development practices, I deliver high-quality, customized websites and apps in a timely manner. My streamlined workflow allows for rapid turnaround times without compromising on the quality of the final product.',
+    },
+    {
+      title: 'Cost-Effective',
+      description:
+        'By operating independently, I can provide premium, tailored solutions without the overhead costs associated with larger agencies. This means you receive top-quality work that is both budget-friendly and tailored to provide maximum value for your investment.',
+    },
   ];
-
   return (
     <section className="relative py-12 bg-gradient-to-b from-slate-50 to-white" id='benefits'>
       <BackgroundBalls />
