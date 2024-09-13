@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'
 import ScrollTracker from '@/components/reusables/ScrollTracker';
@@ -15,14 +15,17 @@ export default function Page({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <CustomCursor />
-      <ScrollTracker />
-      <Navigation />
-      <main className="">
-        { children }
-      </main>
-      <Footer />
-    </div>
+    <>
+      {/* <FullScreenLoader /> */}
+      <div className="min-h-screen flex flex-col">
+        <CustomCursor />
+        <ScrollTracker />
+        <Navigation />
+        <main className="">
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 }

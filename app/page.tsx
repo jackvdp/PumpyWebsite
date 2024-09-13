@@ -384,6 +384,10 @@ function HowItWorks() {
             ))}
           </div>
         </div>
+
+        <div className="relative z-20 flex justify-center mt-16 mb-8" data-aos="fade-up">
+          <GradientButton text="Learn More" href="/services" Icon={ArrowRightIcon}/>
+        </div>
       </div>
     </section>
   );
