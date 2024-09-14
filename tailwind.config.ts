@@ -94,6 +94,7 @@ const config: Config = {
 		},
 	},
 	plugins: [
+		require('@tailwindcss/aspect-ratio'),
 		require("tailwindcss-animate"),
 		plugin(function ({ addUtilities }) {
 			addUtilities({

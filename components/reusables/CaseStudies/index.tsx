@@ -1,27 +1,13 @@
 // CaseStudies.tsx
 
 import React from 'react';
-import GradientButton from './GradientButton'; // Adjust the import path as needed
+import GradientButton from '../GradientButton';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
+import caseStudies from './caseStudies';
 
 function CaseStudies() {
-  const caseStudies = [
-    {
-      name: 'Patch Consultancy',
-      url: 'https://patchconsultancy.co.uk',
-    },
-    {
-      name: 'Elev8 Exchange',
-      url: 'https://elev8exchange.com',
-    },
-    {
-      name: 'Gigabyte Software',
-      url: 'https://gigabyte.software',
-    },
-  ];
-
   return (
-    <section className="py-12 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-12 bg-gradient-to-b from-white to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <h2
@@ -40,25 +26,31 @@ function CaseStudies() {
               data-aos="fade-up"
               data-aos-delay={index * 100}
             >
-              {/* Aspect Ratio Frame */}
-              <div className="aspect-w-16 aspect-h-10 overflow-hidden border border-gray-200 rounded-lg relative">
+              {/* Aspect Ratio Container */}
+              <div
+                className="relative w-full overflow-hidden border border-gray-200 rounded-lg"
+                style={{ paddingBottom: '62.5%' }} // 16:10 aspect ratio
+              >
+                {/* Scaled iframe */}
                 <iframe
                   src={caseStudy.url}
                   title={caseStudy.name}
-                  className="absolute top-0 left-0 w-[200%] h-[200%] pointer-events-none"
+                  className="absolute top-0 left-0 w-full h-full pointer-events-none"
                   style={{
-                    transform: 'scale(0.5)',
+                    transform: 'scale(0.25)',
                     transformOrigin: 'top left',
+                    width: '400%',
+                    height: '400%',
                   }}
                 ></iframe>
+                {/* Overlay to Open in New Tab */}
+                <a
+                  href={caseStudy.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0"
+                ></a>
               </div>
-              {/* Overlay to Open in New Tab */}
-              <a
-                href={caseStudy.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute inset-0"
-              ></a>
             </div>
           ))}
         </div>

@@ -19,7 +19,7 @@ import ScrollIndicator from '@/components/reusables/ScrollIndicator';
 import Page from '@/components/reusables/Page';
 import BackgroundBalls from '@/components/reusables/BackgroundBalls';
 import Logos from '@/components/reusables/Logos';
-import CaseStudies from '@/components/reusables/Case-Studies';
+import CaseStudies from '@/components/reusables/CaseStudies';
 
 export default function HomePage() {
   return (
@@ -229,7 +229,7 @@ function Benefits() {
       icon: LightningBoltIcon
     },
   ];
-  
+
   return (
     <section className="relative py-12 bg-gradient-to-b from-slate-50 to-white" id='benefits'>
       <BackgroundBalls />
@@ -268,7 +268,7 @@ function Benefits() {
           ))}
         </div>
         <div className="relative z-20 flex justify-center my-8" data-aos="fade-up">
-          <GradientButton text="Find Out More" href="/about" Icon={ArrowRightIcon}/>
+          <GradientButton text="Find Out More" href="/about" Icon={ArrowRightIcon} />
         </div>
       </div>
     </section>
@@ -388,7 +388,7 @@ function HowItWorks() {
         </div>
 
         <div className="relative z-20 flex justify-center mt-16 mb-8" data-aos="fade-up">
-          <GradientButton text="Learn More" href="/services" Icon={ArrowRightIcon}/>
+          <GradientButton text="Learn More" href="/services" Icon={ArrowRightIcon} />
         </div>
       </div>
     </section>
