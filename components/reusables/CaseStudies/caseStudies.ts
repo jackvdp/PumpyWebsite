@@ -1,7 +1,7 @@
 const caseStudies = [
     {
         name: 'Patch Consultancy',
-        url: 'https://patchconsultancy.co.uk',
+        url: 'https://patch-consultancy-8p6hlgsw8-pumpy.vercel.app',
     },
     {
         name: 'Elev8 Exchange',
