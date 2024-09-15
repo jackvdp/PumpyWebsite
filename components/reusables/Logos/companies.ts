@@ -32,6 +32,11 @@ const companies: Company[] = [
         imageUrl: 'https://www.vanderpumpfx.com/img/logo%20medium.png',
         animate: false,
     },
+    {
+        name: "International Centre for Parliamentary Studies",
+        imageUrl: "https://www.electoralnetwork.org/img/logos/ICPSLogo-White.png",
+        animate: false
+    }
 ];
 
 export default companies;
