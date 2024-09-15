@@ -14,13 +14,13 @@ import {
 } from '@radix-ui/react-icons';
 import Image from 'next/image';
 import Contact from '@/components/reusables/Contact';
-import GradientButton from '@/components/reusables/GradientButton';
+import GradientButton, { SecondaryGradientButton } from '@/components/reusables/GradientButton';
 import ScrollIndicator from '@/components/reusables/ScrollIndicator';
 import Page from '@/components/reusables/Page';
 import BackgroundBalls from '@/components/reusables/BackgroundBalls';
 import Logos from '@/components/reusables/Logos';
 import CaseStudies from '@/components/reusables/CaseStudies';
-import FeatureCard, { FeatureCardProps } from '@/components/reusables/FeatureCard';
+import FeatureCard from '@/components/reusables/FeatureCard';
 
 export default function HomePage() {
   return (
@@ -49,30 +49,6 @@ function Hero() {
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
-  };
-
-  const featuresContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.5, // Increase this value for more delay between items
-        delayChildren: 0.8 // Delay before the first item appears
-      }
-    }
-  };
-
-  const featureItemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 10
-      }
-    }
   };
 
   return (
@@ -110,7 +86,7 @@ function Hero() {
             animate="visible"
           >
             <motion.h1
-              className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl"
+              className="tracking-tight font-extrabold text-4xl sm:text-5xl md:text-7xl"
               variants={itemVariants}
             >
               <span className="block bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 animate-gradient">
@@ -121,7 +97,7 @@ function Hero() {
               </span>
             </motion.h1>
             <motion.p
-              className="mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl text-slate-700"
+              className="mt-3 max-w-md text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl text-slate-700"
               variants={itemVariants}
             >
               We specialize in crafting bespoke websites and apps that perfectly fit your unique needs.
@@ -129,13 +105,17 @@ function Hero() {
               to bring your digital vision to life quickly and effectively.
             </motion.p>
             <motion.div
-              className="mt-5 w-full sm:w-auto md:mt-8 flex justify-center lg:justify-start"
+              className="mt-5 w-full sm:w-auto md:mt-8 flex justify-center lg:justify-start gap-4"
               variants={itemVariants}
             >
               <GradientButton
                 text="Let's Discuss Your Project"
                 Icon={ChatBubbleIcon}
                 href="/contact"
+              />
+              <SecondaryGradientButton
+                text="Our Works"
+                href="/casestudies"
               />
             </motion.div>
           </motion.div>
@@ -144,36 +124,6 @@ function Hero() {
 
       {/* Features aligned to bottom */}
       <div className="w-full py-6">
-        <motion.div
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-center gap-8"
-          variants={featuresContainerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {[
-            { icon: PersonIcon, text: "Personal Service" },
-            { icon: RocketIcon, text: "Fast Delivery" },
-            { icon: LightningBoltIcon, text: "Cost-Effective" },
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              className="flex items-center space-x-3"
-              variants={featureItemVariants}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <motion.div
-                className="p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg shadow-lg"
-                whileHover={{ rotate: 5 }}
-              >
-                <item.icon className="w-6 h-6 text-white" />
-              </motion.div>
-              <span className="text-sm font-bold text-gray-800">
-                {item.text}
-              </span>
-            </motion.div>
-          ))}
-        </motion.div>
         <ScrollIndicator />
       </div>
 
@@ -365,7 +315,7 @@ function HowItWorks() {
           </div>
         </div>
 
-        <div className="relative z-20 flex justify-center mt-16 mb-8" data-aos="fade-up">
+        <div className="relative z-20 flex justify-center mt-16" data-aos="fade-up">
           <GradientButton text="Learn More" href="/services" Icon={ArrowRightIcon} />
         </div>
       </div>
