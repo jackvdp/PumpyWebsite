@@ -3,15 +3,16 @@ import Slider from 'react-infinite-logo-slider';
 import companies from "./companies";
 
 export default function Logos() {
+    const slate50 = "#f8fafc";
     return (
-        <section className="py-12 bg-gradient-to-b from-white to-slate-50 overflow-hidden">
+        <section className="py-12 bg-gradient-to-b from-slate-50 to-slate-50 overflow-hidden">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
                 <Slider
                     width="250px"
                     duration={40}
                     pauseOnHover={false}
-                    blurBorders={false}
-                    blurBoderColor={'#fff'}
+                    blurBorders={true}
+                    blurBoderColor={slate50}
                 >
                     {companies.map((company, index) => (
                         <Slider.Slide key={index}>
