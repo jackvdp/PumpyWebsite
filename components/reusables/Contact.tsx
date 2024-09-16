@@ -12,12 +12,12 @@ import {
   } from '@radix-ui/react-icons';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import BackgroundParticles from './BackgroundParticles';
 
 export default function Contact() {
     return (
         <section className="py-24 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-            <div className="absolute top-32 left-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-            <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+            <BackgroundParticles id='contact'/>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <h2 data-aos="fade-up" className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
