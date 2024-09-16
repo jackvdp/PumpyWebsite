@@ -14,7 +14,7 @@ import Image from 'next/image';
 import Contact from '@/components/reusables/Contact';
 import GradientButton from '@/components/reusables/GradientButton';
 import Page from '@/components/reusables/Page';
-import BackgroundBalls from '@/components/reusables/BackgroundBalls';
+import BackgroundParticles from '@/components/reusables/BackgroundParticles';
 import Logos from '@/components/reusables/Logos';
 import CaseStudies from '@/components/reusables/CaseStudies';
 import FeatureCard from '@/components/reusables/FeatureCard';
@@ -57,7 +57,7 @@ function Benefits() {
   
   return (
     <section className="relative py-12 bg-gradient-to-b from-slate-50 to-white" id='benefits'>
-      <BackgroundBalls />
+      <BackgroundParticles id='foo' />
       <div className="absolute top-32 left-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,7 +114,7 @@ function HowItWorks() {
 
   return (
     <section className="relative py-16 bg-gradient-to-b from-white to-slate-50">
-      <BackgroundBalls />
+      <BackgroundParticles id='biz' />
       <div className="absolute top-32 left-0 w-64 h-64 bg-indigo-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
 

@@ -9,7 +9,7 @@ export default function Hero() {
     return (
         <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 min-h-screen flex flex-col justify-between overflow-hidden">
             {/* Animated Background Circles with Parallax Effect */}
-            <BackgroundParticles />
+            <BackgroundParticles id='bar' />
 
             {/* Main Content */}
             <div className="flex-grow flex items-center pt-16">
