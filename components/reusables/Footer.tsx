@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
         <svg
           className="relative block w-full h-16"
-          viewBox="0 0 1200 120"
+          viewBox="0 0 1000 120"
           preserveAspectRatio="none"
         >
           <path
