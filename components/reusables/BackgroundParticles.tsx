@@ -37,7 +37,6 @@ export default function BackgroundParticles() {
             number: {
                 density: {
                     enable: true,
-                    area: 800,
                 },
                 value: 5,
             },

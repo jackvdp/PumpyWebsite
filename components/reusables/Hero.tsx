@@ -1,15 +1,10 @@
-import { useViewportScroll, useTransform, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ChatBubbleIcon } from '@radix-ui/react-icons';
 import GradientButton, { SecondaryGradientButton } from '@/components/reusables/GradientButton';
 import ScrollIndicator from '@/components/reusables/ScrollIndicator';
 import BackgroundParticles from './BackgroundParticles';
 
-export default function Hero(): JSX.Element {
-    // Parallax effect for background circles
-    const { scrollY } = useViewportScroll();
-    const yRange = [0, 750];
-    const yTransform1 = useTransform(scrollY, yRange, [0, -500]);
-    const yTransform2 = useTransform(scrollY, yRange, [0, 500]);
+export default function Hero() {
 
     return (
         <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 min-h-screen flex flex-col justify-between overflow-hidden">
