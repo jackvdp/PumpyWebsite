@@ -72,6 +72,7 @@ export default function BackgroundParticles({ className = "", id }: BackgroundPa
           className="absolute inset-0"
         />
       )}
+      <div className="absolute inset-0 backdrop-filter backdrop-blur-md"></div>
     </div>
   );
 }
