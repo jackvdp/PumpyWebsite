@@ -2,6 +2,7 @@ import { useViewportScroll, useTransform, motion } from 'framer-motion';
 import { ChatBubbleIcon } from '@radix-ui/react-icons';
 import GradientButton, { SecondaryGradientButton } from '@/components/reusables/GradientButton';
 import ScrollIndicator from '@/components/reusables/ScrollIndicator';
+import BackgroundParticles from './BackgroundParticles';
 
 export default function Hero(): JSX.Element {
     // Parallax effect for background circles
@@ -13,17 +14,7 @@ export default function Hero(): JSX.Element {
     return (
         <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 min-h-screen flex flex-col justify-between overflow-hidden">
             {/* Animated Background Circles with Parallax Effect */}
-            {['bg-indigo-300', 'bg-purple-300', 'bg-pink-300', 'bg-blue-300', 'bg-violet-300'].map((color, index) => (
-                <motion.div
-                    key={index}
-                    className={`absolute w-64 h-64 ${color} rounded-full mix-blend-multiply filter blur-xl opacity-50`}
-                    style={{
-                        top: `${(index * 20) % 100}%`,
-                        left: `${(index * 25) % 100}%`,
-                        y: index % 2 === 0 ? yTransform1 : yTransform2,
-                    }}
-                />
-            ))}
+            <BackgroundParticles />
 
             {/* Main Content */}
             <div className="flex-grow flex items-center pt-16">
