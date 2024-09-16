@@ -42,7 +42,7 @@ export default function BackgroundParticles() {
                 value: 5,
             },
             opacity: {
-                value: 0.5,
+                value: 0.4,
             },
             shape: {
                 type: "circle",
@@ -58,12 +58,17 @@ export default function BackgroundParticles() {
         },
     };
 
-    return init ? (
-        <Particles
-            id="tsparticles"
-            particlesLoaded={particlesLoaded}
-            options={particlesOptions}
-            className="absolute inset-0"
-        />
-    ) : null;
+    return (
+        <div className="absolute inset-0">
+            {init && (
+                <Particles
+                    id="tsparticles"
+                    particlesLoaded={particlesLoaded}
+                    options={particlesOptions}
+                    className="absolute inset-0"
+                />
+            )}
+            <div className="absolute inset-0 backdrop-filter backdrop-blur-md"></div>
+        </div>
+    );
 }
