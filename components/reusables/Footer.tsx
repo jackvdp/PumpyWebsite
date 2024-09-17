@@ -4,6 +4,7 @@ import {
   InstagramLogoIcon,
 } from '@radix-ui/react-icons';
 import React from 'react';
+import Logo from './Logo';
 
 export default function Footer() {
   return (
@@ -39,16 +40,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-white-300 mb-4">About Pumpy</h3>
+            <Logo isScrolled={true} monochrome={true} />
             <p className="text-slate-100">
               Elevating digital experiences through innovative web and app development.
             </p>
-            <a
-              href="#"
-              className="inline-flex items-center text-white-300 hover:text-white-200 transition-colors"
-            >
-              Learn more
-            </a>
           </div>
           <div>
             <h3 className="text-2xl font-bold text-white-300 mb-4">Quick Links</h3>

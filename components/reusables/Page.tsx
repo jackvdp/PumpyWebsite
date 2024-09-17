@@ -15,17 +15,14 @@ export default function Page({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <>
-      {/* <FullScreenLoader /> */}
-      <div className="min-h-screen flex flex-col">
-        <CustomCursor />
-        <ScrollTracker />
-        <Navigation />
-        <main className="">
-          {children}
-        </main>
-        <Footer />
-      </div>
-    </>
+    < div className="min-h-screen flex flex-col" >
+      <CustomCursor />
+      <ScrollTracker />
+      <Navigation />
+      <main className="flex-grow">
+        {children}
+      </main>
+      <Footer />
+    </div >
   );
 }
