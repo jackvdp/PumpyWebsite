@@ -5,10 +5,11 @@ import { Container, ISourceOptions } from "@tsparticles/engine";
 
 interface BackgroundParticlesProps {
   className?: string;
+  density?: number;
   id: string;
 }
 
-export default function BackgroundParticles({ className = "", id }: BackgroundParticlesProps) {
+export default function BackgroundParticles({ className = "", id, density }: BackgroundParticlesProps) {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -43,7 +44,7 @@ export default function BackgroundParticles({ className = "", id }: BackgroundPa
         density: {
           enable: true,
         },
-        value: 5,
+        value: density || 5
       },
       opacity: {
         value: 0.4,
