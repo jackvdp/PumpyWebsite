@@ -129,7 +129,7 @@ export default function Contact() {
                                         <span className="font-medium">Phone:</span>
                                         <a
                                             href="tel:+447831640003"
-                                            className="ml-2 hover:text-purple-600 transition-colors"
+                                            className="ml-2 text-purple-600 hover:text-purple-600 hover:underline transition-colors"
                                         >
                                             +44 (0) 7831 640003
                                         </a>
@@ -139,7 +139,7 @@ export default function Contact() {
                                         <span className="font-medium">Email:</span>
                                         <a
                                             href="mailto:jack@vanderpump.tech"
-                                            className="ml-2 hover:text-purple-600 transition-colors"
+                                            className="ml-2 text-purple-600 hover:text-purple-600 hover:underline transition-colors"
                                         >
                                             jack@vanderpump.tech
                                         </a>
