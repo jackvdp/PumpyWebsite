@@ -1,5 +1,3 @@
-// Contact.tsx
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
