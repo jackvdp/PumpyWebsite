@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image";
 import Slider from 'react-infinite-logo-slider';
 import companies from "./companies";

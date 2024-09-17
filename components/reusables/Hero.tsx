@@ -1,3 +1,4 @@
+"use client"
 import { motion } from 'framer-motion';
 import { ChatBubbleIcon } from '@radix-ui/react-icons';
 import GradientButton, { SecondaryGradientButton } from '@/components/reusables/GradientButton';

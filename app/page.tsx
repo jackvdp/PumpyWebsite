@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -19,6 +17,11 @@ import Logos from '@/components/reusables/Logos';
 import CaseStudies from '@/components/reusables/CaseStudies';
 import FeatureCard from '@/components/reusables/FeatureCard';
 import Hero from '@/components/reusables/Hero';
+import { getPageMetadata } from '@/lib/getMetadata';
+
+export const metadata = getPageMetadata({
+  description: "Pumpy is a digital agency that provides tailored web development and design services to help businesses grow online.",
+});
 
 export default function HomePage() {
   return (
@@ -54,7 +57,7 @@ function Benefits() {
       icon: LightningBoltIcon
     },
   ];
-  
+
   return (
     <section className="relative py-12 bg-gradient-to-b from-slate-50 to-white" id='benefits'>
       <BackgroundParticles id='foo' />
