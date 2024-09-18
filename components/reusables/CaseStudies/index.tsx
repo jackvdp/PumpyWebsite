@@ -42,7 +42,6 @@ function CaseStudies() {
                     width: '400%',
                     height: '400%',
                   }}
-                  sandbox="allow-same-origin"
                 ></iframe>
                 {/* Overlay to Open in New Tab */}
                 <a
