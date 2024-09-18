@@ -1,4 +1,4 @@
-const caseStudies = [
+const caseStudies: CaseStudy[] = [
     {
         name: 'Patch Consultancy',
         url: 'https://patch-consultancy-8p6hlgsw8-pumpy.vercel.app',
@@ -14,3 +14,8 @@ const caseStudies = [
 ];
 
 export default caseStudies;
+
+export interface CaseStudy {
+  url: string;
+  name: string;
+}

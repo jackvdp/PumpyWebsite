@@ -26,7 +26,7 @@ export default function HomePage() {
       <Hero />
       <Logos />
       <Benefits />
-      {/* <CaseStudies /> */}
+      <CaseStudies />
       <HowItWorks />
       <Contact />
     </Page>
