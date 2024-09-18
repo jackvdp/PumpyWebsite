@@ -1,5 +1,3 @@
-"use client"
-
 import React from 'react';
 import {
   RocketIcon,
@@ -18,9 +16,9 @@ import Hero from '@/components/reusables/Hero';
 import { getPageMetadata } from '@/lib/getMetadata';
 import HowItWorks from '@/components/reusables/HowItWorks';
 
-// export const metadata = getPageMetadata({
-//   description: "Pumpy is a digital agency that provides tailored web development and design services to help businesses grow online.",
-// });
+export const metadata = getPageMetadata({
+  description: "Pumpy is a digital agency that provides tailored web development and design services to help businesses grow online.",
+});
 
 export default function HomePage() {
   return (
@@ -28,7 +26,7 @@ export default function HomePage() {
       <Hero />
       <Logos />
       <Benefits />
-      <CaseStudies />
+      {/* <CaseStudies /> */}
       <HowItWorks />
       <Contact />
     </Page>
