@@ -21,9 +21,7 @@ export default function BackgroundParticles({ className = "", id, density }: Bac
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
-  };
+  const particlesLoaded = async (container?: Container): Promise<void> => {}
 
   const particlesOptions: ISourceOptions = {
     fpsLimit: 120,
@@ -63,6 +61,8 @@ export default function BackgroundParticles({ className = "", id, density }: Bac
       zIndex: -1,
     },
   };
+
+  console.log('init bg particles ', id, init);
 
   return (
     <div className={`absolute inset-0 ${className}`}>

@@ -7,11 +7,11 @@ type PageMetadataProps = {
 }
 
 export function getPageMetadata({
-    title = 'Vanderpump Tech',
+    title,
     description = 'Bespoke Web & App Development Solutions',
     pagePath = ''
 }: PageMetadataProps = {}): Metadata {
-    const fullTitle = `${title} | Vanderpump Tech`;
+    const fullTitle = title ? `${title} | Vanderpump Tech` : "Vanderpump Tech | Bespoke Web & App Development Solutions";
     const fullDescription = description || 'Vanderpump Tech offers personal, fast, and cost-effective web and app development services. Get tailored solutions that bring your vision to life and meet your business objectives.';
     const url = `https://vanderpump.tech${pagePath}`;
 

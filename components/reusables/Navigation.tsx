@@ -44,7 +44,7 @@ export default function Navigation() {
                             <NavigationMenuList>
                                 {navItems.map((item, index) => (
                                    (item === "Contact") ? (
-                                        <GradientButton text="Let's talk" href="/contact" Icon={ChatBubbleIcon} />
+                                        <GradientButton key={index} text="Let's talk" href="/contact" Icon={ChatBubbleIcon} />
                                     ) : (
                                         <NavItem key={index} isScrolled={isScrolled} item={item} index={index} />
                                     )

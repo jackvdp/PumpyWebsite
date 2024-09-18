@@ -4,7 +4,6 @@ import {
     MagnifyingGlassIcon,
     Pencil1Icon
   } from '@radix-ui/react-icons';
-import exp from 'constants';
 
 const steps = [
     {

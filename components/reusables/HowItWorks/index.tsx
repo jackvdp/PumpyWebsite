@@ -96,9 +96,9 @@ export default function HowItWorks({ showButton = true }) {
                                                 <Image
                                                     src={step.image}
                                                     alt={`${step.title} Process`}
-                                                    layout="fill"
-                                                    objectFit="cover"
-                                                    className="rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none transition-transform duration-300 group-hover:scale-110"
+                                                    fill
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                    className="rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none transition-transform duration-300 group-hover:scale-110 object-cover"
                                                 />
                                             </div>
                                         </div>
