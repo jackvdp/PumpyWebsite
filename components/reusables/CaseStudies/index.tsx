@@ -1,62 +1,33 @@
-"use client";
-
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import GradientButton from '../GradientButton';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
-import caseStudies, { CaseStudy} from './caseStudies';
+import caseStudies, { CaseStudy } from './caseStudies';
 
 const CaseStudyPreview = ({ caseStudy, index }: { caseStudy: CaseStudy; index: number }) => {
-  // const [isVisible, setIsVisible] = useState(false);
-  // const iframeRef = useRef(null);
-
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     ([entry]) => {
-  //       if (entry.isIntersecting) {
-  //         setIsVisible(true);
-  //         observer.unobserve(entry.target);
-  //       }
-  //     },
-  //     { threshold: 0.1 }
-  //   );
-
-  //   if (iframeRef.current) {
-  //     observer.observe(iframeRef.current);
-  //   }
-
-  //   return () => {
-  //     if (iframeRef.current) {
-  //       observer.unobserve(iframeRef.current);
-  //     }
-  //   };
-  // }, []);
 
   return (
     <div
       className="relative"
       data-aos="fade-up"
       data-aos-delay={index * 100}
-      // ref={iframeRef}
     >
       <div
         className="relative w-full overflow-hidden border border-gray-200 rounded-lg"
         style={{ paddingBottom: '62.5%' }} // 16:10 aspect ratio
       >
-        {/* {isVisible && ( */}
-          <iframe
-            src={caseStudy.url}
-            title={caseStudy.name}
-            className="absolute top-0 left-0 w-full h-full pointer-events-none"
-            style={{
-              transform: 'scale(0.25)',
-              transformOrigin: 'top left',
-              width: '400%',
-              height: '400%',
-            }}
-            loading="lazy"
-            sandbox="allow-scripts"
-          />
-        {/* )} */}
+        <iframe
+          src={caseStudy.url}
+          title={caseStudy.name}
+          className="absolute top-0 left-0 w-full h-full pointer-events-none"
+          style={{
+            transform: 'scale(0.25)',
+            transformOrigin: 'top left',
+            width: '400%',
+            height: '400%',
+          }}
+          loading="lazy"
+          sandbox="allow-scripts"
+        />
         <a
           href={caseStudy.url}
           target="_blank"
