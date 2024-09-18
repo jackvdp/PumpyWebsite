@@ -126,10 +126,10 @@ function HowItWorks() {
           How It Works
         </h2>
         <div className="relative">
-          <div className="space-y-24">
+          <div className="space-y-12 lg:space-y-24">
             {steps.map((step, index) => (
               <div key={index} className="relative" data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}>
-                <div className={`absolute top-0 ${index % 2 === 0 ? '-left-20' : '-right-20'} -mt-10`}>
+                <div className={`absolute top-0 hidden lg:block ${index % 2 === 0 ? '-left-20' : '-right-20'} -mt-10`}>
                   <svg width="120" height="120" viewBox="0 0 120 120" className="transform scale-75 sm:scale-100">
                     <defs>
                       <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
@@ -152,9 +152,32 @@ function HowItWorks() {
                     </text>
                   </svg>
                 </div>
+                <div className="lg:hidden flex justify-center mb-4">
+                  <svg width="80" height="80" viewBox="0 0 120 120">
+                    <defs>
+                      <linearGradient id={`gradient-mobile-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#6366f1" />
+                        <stop offset="100%" stopColor="#a855f7" />
+                      </linearGradient>
+                    </defs>
+                    <text
+                      x="50%"
+                      y="50%"
+                      dominantBaseline="middle"
+                      textAnchor="middle"
+                      fontSize="80"
+                      fontWeight="bold"
+                      fill="none"
+                      stroke={`url(#gradient-mobile-${index})`}
+                      strokeWidth="2"
+                    >
+                      {step.number}
+                    </text>
+                  </svg>
+                </div>
                 <Card className={`
                   relative overflow-hidden transition-all duration-300 hover:shadow-xl
-                  lg:w-3/4 ${index % 2 === 0 ? 'lg:ml-auto' : ''}
+                  w-full lg:w-3/4 ${index % 2 === 0 ? 'lg:ml-auto' : ''}
                   group
                 `}>
                   <div className="flex flex-col lg:flex-row">
