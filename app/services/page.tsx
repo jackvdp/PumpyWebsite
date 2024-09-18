@@ -1,10 +1,10 @@
 import Page from "@/components/reusables/Page";
-import Contact from "@/components/reusables/Contact";
+import HowItWorks from "@/components/reusables/HowItWorks";
 
 export default function ContactPage() {
     return (
         <Page>
-            <Contact />
+            <HowItWorks showButton={false} />
         </Page>
     );
 }
