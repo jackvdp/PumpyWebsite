@@ -6,7 +6,6 @@ import ScrollIndicator from '@/components/reusables/ScrollIndicator';
 import BackgroundParticles from './BackgroundParticles';
 
 export default function Hero() {
-
     return (
         <section className="relative bg-gradient-to-br from-slate-50 to-indigo-100 min-h-screen flex flex-col justify-between overflow-hidden">
             {/* Animated Background Circles with Parallax Effect */}
@@ -42,7 +41,7 @@ export default function Hero() {
                             </span>
                         </motion.h1>
                         <motion.p
-                            className="mt-5 max-w-md text-base sm:text-lg md:mt-6 md:text-xl md:max-w-3xl text-slate-700 mx-auto lg:mx-0"
+                            className="mt-5 max-w-md mx-auto lg:mx-0 text-base md:text-lg lg:text-xl text-slate-700"
                             variants={{
                                 hidden: { opacity: 0, y: 50 },
                                 visible: { opacity: 1, y: 0 },
@@ -53,7 +52,7 @@ export default function Hero() {
                             to bring your digital vision to life quickly and effectively.
                         </motion.p>
                         <motion.div
-                            className="mt-8 w-full sm:w-auto flex justify-center lg:justify-start gap-4"
+                            className="mt-8 flex flex-col sm:flex-row justify-center lg:justify-start gap-4"
                             variants={{
                                 hidden: { opacity: 0, y: 50 },
                                 visible: { opacity: 1, y: 0 },
