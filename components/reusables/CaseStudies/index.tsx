@@ -6,43 +6,43 @@ import { ArrowRightIcon } from '@radix-ui/react-icons';
 import caseStudies, { CaseStudy} from './caseStudies';
 
 const CaseStudyPreview = ({ caseStudy, index }: { caseStudy: CaseStudy; index: number }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const iframeRef = useRef(null);
+  // const [isVisible, setIsVisible] = useState(false);
+  // const iframeRef = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting) {
+  //         setIsVisible(true);
+  //         observer.unobserve(entry.target);
+  //       }
+  //     },
+  //     { threshold: 0.1 }
+  //   );
 
-    if (iframeRef.current) {
-      observer.observe(iframeRef.current);
-    }
+  //   if (iframeRef.current) {
+  //     observer.observe(iframeRef.current);
+  //   }
 
-    return () => {
-      if (iframeRef.current) {
-        observer.unobserve(iframeRef.current);
-      }
-    };
-  }, []);
+  //   return () => {
+  //     if (iframeRef.current) {
+  //       observer.unobserve(iframeRef.current);
+  //     }
+  //   };
+  // }, []);
 
   return (
     <div
       className="relative"
       data-aos="fade-up"
       data-aos-delay={index * 100}
-      ref={iframeRef}
+      // ref={iframeRef}
     >
       <div
         className="relative w-full overflow-hidden border border-gray-200 rounded-lg"
         style={{ paddingBottom: '62.5%' }} // 16:10 aspect ratio
       >
-        {isVisible && (
+        {/* {isVisible && ( */}
           <iframe
             src={caseStudy.url}
             title={caseStudy.name}
@@ -56,7 +56,7 @@ const CaseStudyPreview = ({ caseStudy, index }: { caseStudy: CaseStudy; index: n
             loading="lazy"
             sandbox="allow-scripts"
           />
-        )}
+        {/* )} */}
         <a
           href={caseStudy.url}
           target="_blank"
