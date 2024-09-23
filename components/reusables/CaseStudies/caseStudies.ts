@@ -4,8 +4,8 @@ const caseStudies: CaseStudy[] = [
         url: 'https://patch-consultancy-8p6hlgsw8-pumpy.vercel.app',
     },
     {
-        name: 'Vanderpump FX',
-        url: 'https://vanderpumpfx.com',
+        name: 'Elev8 FX',
+        url: 'https://elev8exchange.com',
     },
     {
         name: 'Gigabyte Software',
