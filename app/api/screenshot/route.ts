@@ -18,13 +18,11 @@ export async function GET(request: NextRequest) {
         await fs.access(filepath);
         // If it exists, send the existing file
         const fileBuffer = await fs.readFile(filepath);
-        console.log('Sending existing file:', filename);
         return new NextResponse(fileBuffer, {
             headers: { 'Content-Type': 'image/png' },
         });
     } catch (error) {
         // If file doesn't exist, generate a new screenshot
-        console.log('Generating new screenshot:', filename);
         const browser = await puppeteer.launch();
         const page = await browser.newPage();
         await page.setViewport({ width: 1920, height: 1200 });
