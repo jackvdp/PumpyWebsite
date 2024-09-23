@@ -23,6 +23,7 @@ export default function CaseStudyPreview({ caseStudy, index }: {
                     alt={`Screenshot of ${caseStudy.name}`}
                     fill
                     style={{ objectFit: 'cover' }}
+                    unoptimized={true}
                     priority={index < 2} // Load the first two images immediately
                 />
                 <a
