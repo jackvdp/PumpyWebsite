@@ -52,7 +52,7 @@ export default function Footer() {
                 <li key={item}>
                   <a
                     href="#"
-                    className="text-slate-100 hover:text-white-300 transition-colors"
+                    className="text-slate-100 hover:text-pink-500 transition-colors"
                   >
                     {item}
                   </a>
@@ -74,7 +74,7 @@ export default function Footer() {
                 <a
                   key={index}
                   href="#"
-                  className="p-2 bg-purple-700 rounded-full hover:bg-slate-500 transition-colors"
+                  className="p-2 bg-purple-700 rounded-full hover:bg-pink-500 transition-colors"
                   aria-label={social.label}
                 >
                   {React.cloneElement(social.icon, { className: 'w-5 h-5' })}
