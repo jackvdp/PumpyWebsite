@@ -1,45 +1,30 @@
-import { Flame } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
+import LogoImage from '@/app/images/logo-web.png';
 
 export default function Logo({ isScrolled, monochrome = false }: { isScrolled: boolean; monochrome?: boolean }) {
+    const getLogoColor = () => {
+        if (monochrome) return 'brightness-0 invert'; // White for monochrome
+        return 'brightness-0 saturate-100 invert-[.4] sepia-[.1] saturate-[25] hue-rotate-[230deg]';
+    };
+
     return (
         <Link href="/" passHref legacyBehavior>
             <a className="flex cursor-pointer" aria-label="Go to homepage">
                 <div className="flex-shrink-0 flex items-center">
-                    <div className="flex items-center space-x-2 group">
-                        <div className="relative w-8 h-8">
-                            {!monochrome && (
-                                <div className="absolute inset-0 bg-gradient-to-t from-indigo-400 to-purple-400 opacity-40 blur-md rounded-full animate-flame"></div>
-                            )}
-                            <Flame
-                                className={`w-8 h-8 transform transition-all duration-300 relative z-10
-                  ${monochrome
-                                        ? 'text-white'
-                                        : isScrolled
-                                            ? 'text-indigo-600'
-                                            : 'text-indigo-700'
-                                    }
-                  group-hover:scale-110 group-hover:rotate-12`}
-                            />
-                        </div>
-                        <span
-                            className={`text-2xl font-bold transition-all duration-300
-                ${monochrome
-                                    ? 'text-white'
-                                    : `bg-clip-text text-transparent bg-gradient-to-r 
-                    ${isScrolled
-                                        ? 'from-indigo-600 via-purple-600 to-indigo-600'
-                                        : 'from-indigo-700 via-purple-700 to-indigo-700'
-                                    }
-                    bg-size-200 bg-pos-0 group-hover:bg-pos-100`
-                                }`
-                            }
-                        >
-                            Pumpy
-                        </span>
+                    <div className="group relative">
+                        <Image
+                            src={LogoImage}
+                            alt="Pumpy Logo"
+                            width={150}
+                            height={58}
+                            className={`transform transition-all duration-300
+                ${getLogoColor()}
+                group-hover:scale-105`}
+                        />
                     </div>
                 </div>
             </a>
         </Link>
-    )
+    );
 }
